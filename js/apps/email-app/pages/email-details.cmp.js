@@ -1,20 +1,25 @@
 import { emailService } from "../services/email-service.js";
-
+import sideNav from "../cmps/side-nav.cmp.js";
 
 export default {
     template: `
         <section v-if="email" class="email-details">
             <router-link to="/email"><button class="close-email-btn">Back to Email list</button></router-link>
+            <div class="wrapper flex">
+            <side-nav></side-nav>
             <div class="flex flex-col details-container">
-                <h3>New Message</h3>
-                <h4>To: </h4>
-                <h4>Cc: </h4>
-                <h4>Bcc: </h4>
-                <h4>Subject: </h4>
+                <div class="title-container flex scpase-between">
+                     <h2>{{email.subject}}</h2>
+                     <div class="btns-container">
+                        <button>Delete</button>
+                        <button>Full screen</button>
+                    </div>
+                </div>
+                <h5>{{email.name}}{{email.address}}</h5>
                 <div class="mail-body">
-                    <button>Send</button>
-                    <button>Delete</button>
+                    <p>fsfsdgsd gsgsgsg sgsvsdffdada dasfsdvbd fgbdfbg dfbvsfcsdadas</p>
                 </div>   
+                </div>
             </div>
         </section>
         `,
@@ -32,6 +37,25 @@ export default {
                     )
         },
         components: {
-            emailService
+            emailService,
+            sideNav
         }
 }
+
+
+
+
+// <section v-if="email" class="email-details">
+// <router-link to="/email"><button class="close-email-btn">Back to Email list</button></router-link>
+// <div class="flex flex-col details-container">
+//     <h3>New Message</h3>
+//     <h4>To: </h4>
+//     <h4>Cc: </h4>
+//     <h4>Bcc: </h4>
+//     <h4>Subject: </h4>
+//     <div class="mail-body">
+//         <button>Send</button>
+//         <button>Delete</button>
+//     </div>   
+// </div>
+// </section>

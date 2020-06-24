@@ -1,2 +1,9 @@
+/* Helpers */
+@import "./helpers.css";
+
 /*Notes APP CSS*/
 @import "./note-app/cmps/note.css";
+
+/*Email APP CSS*/
+@import "./apps/email-app/email.css";
+

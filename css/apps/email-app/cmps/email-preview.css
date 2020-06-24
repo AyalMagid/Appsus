@@ -1,0 +1,11 @@
+.read {
+    font-weight: 400;
+}
+
+.unread {
+    font-weight: bold;
+}
+
+.email-preview{
+    flex-grow: 1;
+}
