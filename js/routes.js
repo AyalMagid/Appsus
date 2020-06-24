@@ -6,6 +6,7 @@ import emailDetails from './apps/email-app/pages/email-details.cmp.js';
 // import aboutUs from './pages/about-us.cmp.js';
 
 const myRoutes = [
+
     // MAIN
 
     // {
@@ -27,7 +28,6 @@ const myRoutes = [
         component: emailDetails
     },
 
-
     // BOOK-APP
     // {
     //     path: '/book',
@@ -35,6 +35,16 @@ const myRoutes = [
     // },
     // {
     //     path: '/book/:bookId',
+    //     component: bookDetails
+    // },
+
+    // NOTE-APP
+    // {
+    //     path: '/note',
+    //     component: bookApp
+    // },
+    // {
+    //     path: '/note/:noteId',
     //     component: bookDetails
     // },
 ];

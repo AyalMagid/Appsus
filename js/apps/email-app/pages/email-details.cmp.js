@@ -24,13 +24,13 @@ export default {
             }
         },
         created () {
-        
                 const {emailId} = this.$route.params;
+                console.log(emailId)
                 emailService.getById(emailId)
-                    .then(email => {
+                    .then(email => 
                         console.log(email)
-                        this.email = email;
-                    })
+                        // this.email = email;
+                    )
         },
         components: {
             emailService
