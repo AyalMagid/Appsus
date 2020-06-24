@@ -1,11 +1,11 @@
-
+import {eventBus} from '../services/event-bus.service.js';
 
 export default {
     props: ["emails"],
     template: `
         <section class="side-nav"> 
             <div class="side-nav flex flex-col">
-            <button>+Compose</button>
+            <button @click="emitCompose">+Compose</button>
             <h3>Inbox</h3>
             <h3>Starred</h3>
             <h3>Sent Mail</h3>
@@ -14,9 +14,13 @@ export default {
             </div>
         </section>
       `,
-    components: {
-
-    },
+    methods: {
+        emitCompose() {
+            this.$emit('compose', true);
+        },
+    }
   };
+
+  
 
 

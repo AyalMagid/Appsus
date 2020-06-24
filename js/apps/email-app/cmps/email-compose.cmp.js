@@ -1,9 +1,14 @@
+import {eventBus} from '../services/event-bus.service.js';
+
 export default {
   template: `
         <section class="email-compose">
             <form>
                  <div class="flex flex-col details-container">
-                    <h3>New Message</h3>
+                     <div class="flex space-between">
+                        <h3>New Message</h3>
+                        <button @click="emitClsCompose" class="cls-compose">x</button>
+                    </div>
                     <h4>To: </h4>
                     <h4>Cc: </h4>
                     <h4>Bcc: </h4>
@@ -25,6 +30,14 @@ export default {
   computed: {
     isValid() {
       return this.txt ? true : false;
-    },
+    }
   },
+    methods: {
+        emitClsCompose (){
+    
+            this.$emit('clsCompose', false);
+        }
+    }
+  
 };
+

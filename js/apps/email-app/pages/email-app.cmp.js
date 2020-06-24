@@ -6,24 +6,25 @@ import { emailService } from "../services/email-service.js";
 
 export default {
   template: `
-        <main class="email-app">
+        <main class="email-app" >
             <h1>Email</h1>
             <email-filter @sort="sortList" @filter="setFilter" ></email-filter>
             <h3>unread emails: {{unredCount}}</h3>
             <div class="main-container flex space-between">
-                <side-nav/>
+                <side-nav @compose="changeComposeMode" />
                 <div class="list-container">
                     <email-list :emails="emailsToShow" ></email-list>
                 </div>
             </div>
-            <!-- <email-compose/> -->
+            <email-compose  v-if="isComposeMode" @clsCompose="changeComposeMode"/>
         </main>
     `,
   data() {
     return {
       emails: null,
       filterBy: null,
-      sort:''
+    //   sort:''
+    isComposeMode : false
     }
   },
   methods: {
@@ -36,7 +37,11 @@ export default {
         console.log('val', val)
         // if (val='date') {}
         // else {}
-    }
+    },
+    changeComposeMode (val){
+        this.isComposeMode = val;
+    },
+
   },
   computed: {
     emailsToShow() {
@@ -53,7 +58,8 @@ export default {
     unredCount(){
         if (!this.emails) return
         return this.emails.filter(email => !email.isRead).length
-    }
+    },
+
   },
   created() {
     emailService.getEmails().then((emails) => {
