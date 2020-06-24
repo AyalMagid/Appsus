@@ -5,7 +5,17 @@ import emailCompose from "../cmps/email-compose.cmp.js";
 export default {
   template: `
         <section v-if="email" class="email-details">
-            <router-link to="/email"><button class="close-email-btn">Back to Email list</button></router-link>
+        <header class="app-header flex align-center space-between">
+                <h1>Appsus</h1>
+                <nav>
+                    <router-link to="/">Home</router-link> |
+                    <router-link to="/email">MisterEmail</router-link> | 
+                    <router-link to="/note">Miss Notes</router-link> | 
+                    <!-- <router-link to="/book">Miss Books</router-link> |  -->
+                    <router-link to="/about">About</router-link> | 
+                </nav>
+            </header>
+            <!-- <router-link to="/email"><button class="close-email-btn">Back to Email list</button></router-link> -->
             <div class="wrapper flex">
             <side-nav  @compose="changeComposeMode" ></side-nav>
             <div class="flex flex-col details-container">
@@ -16,29 +26,41 @@ export default {
                         <button>Full screen</button>
                     </div>
                 </div>
-                <h5>{{email.name}}{{email.address}}</h5>
+                <div class="flex space-between">
+                    <h5>{{email.name}}{{email.address}}</h5>
+                    <button  @click="setReplayMode(true)" >Reply</button>
+                </div >
                 <div class="mail-body">
-                    <p>fsfsdgsd gsgsgsg sgsvsdffdada dasfsdvbd fgbdfbg dfbvsfcsdadas</p>
+                    <p>{{email.body}}</p>
                 </div>   
                 </div>
             </div>
-            <email-compose  v-if="isComposeMode" @clsCompose="changeComposeMode"/>
+            <email-compose :isReply="isReply" :emailToEdit="email"  v-if="isComposeMode" @clsCompose="closeCompose"/>
         </section>
         `,
   data() {
     return {
       email: null,
       isComposeMode: false,
+      isReply : false
     };
   },
   methods: {
-    changeComposeMode(val) {
-      this.isComposeMode = val;
+    // so it will be possible to edit or write a new compose as well
+    setReplayMode(val){
+        this.isReply = val
+        this.changeComposeMode(val)
     },
+    changeComposeMode(val) {
+        this.isComposeMode = val;
+    },
+    closeCompose (){
+        this.changeComposeMode(false)
+        this.isReply = false
+    }
   },
   created() {
     const { emailId } = this.$route.params;
-    console.log(emailId);
     emailService.getById(emailId).then((email) => (this.email = email));
   },
   components: {

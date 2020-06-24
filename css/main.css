@@ -7,3 +7,17 @@
 /*Email APP CSS*/
 @import "./apps/email-app/email.css";
 
+
+/* MAIN */
+
+body{
+    margin:0
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.app-header {
+
+}

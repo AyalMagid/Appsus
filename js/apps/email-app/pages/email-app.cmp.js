@@ -7,8 +7,18 @@ import { emailService } from "../services/email-service.js";
 export default {
   template: `
         <main class="email-app" >
-            <h1>Email</h1>
-            <email-filter @sort="sortList" @filter="setFilter" ></email-filter>
+        <header class="app-header flex align-center space-between">
+                <h1>Appsus</h1>
+                <email-filter @sort="sortList" @filter="setFilter" ></email-filter>
+                <nav>
+                    <router-link to="/">Home</router-link> |
+                    <router-link to="/email">MisterEmail</router-link> | 
+                    <router-link to="/note">Miss Notes</router-link> | 
+                    <!-- <router-link to="/book">Miss Books</router-link> |  -->
+                    <router-link to="/about">About</router-link> | 
+                </nav>
+            </header>
+            
             <h3>unread emails: {{unredCount}}</h3>
             <div class="main-container flex space-between">
                 <side-nav @compose="changeComposeMode" />
@@ -72,6 +82,6 @@ export default {
     emailList,
     emailFilter,
     emailCompose,
-    sideNav,
+    sideNav
   },
 };

@@ -26,11 +26,11 @@ export default {
         }
     },
     methods: {
-        emitFilter() {
-            this.$emit('filter', this.filterBy);
-        },
         emitSort (){
             this.$emit('sort', this.sortby);
+        },
+        emitFilter() {
+            this.$emit('filter', this.filterBy);
         }
     }
 }
