@@ -6,6 +6,11 @@ const notes = [
     style: { backgroundColor: "#00d" },
   },
   {
+    type: "NoteVideo",
+    info: { url: "http://some-img/me", title: "Me playing Mi" },
+    style: { backgroundColor: "#00d" },
+  },
+  {
     type: "NoteTodos",
     info: {
       label: "How was it:",
@@ -19,7 +24,20 @@ const notes = [
 const getNotes = () => {
   return Promise.resolve(notes);
 };
+const getNoteById = (noteId) => {
+  return notes.find((note) => note.id === noteId);
+};
+const getNoteIndex = (noteId) => {
+  return notes.findINdex((note) => note.id === noteId);
+};
+
+const addNote = (note) => {
+  return notes.push(note);
+};
 
 export const notesService = {
   getNotes,
+  getNoteById,
+  getNoteIndex,
+  addNote,
 };

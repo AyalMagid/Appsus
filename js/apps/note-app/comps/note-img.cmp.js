@@ -1,7 +1,10 @@
 export default {
-  template: `<div>
+  template: `<div class="note-container">
+        <h1>image</h1>
       </div>`,
-  data() {},
+  data() {
+    return {};
+  },
   created() {
     return {};
   },
