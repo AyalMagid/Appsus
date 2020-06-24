@@ -1,7 +1,7 @@
-import homePage from './pages/home-page.cmp.js.js';
-import bookApp from './pages/books-app.cmp.js.js';
-import bookDetails from './pages/book-details.cmp.js.js';
-import aboutUs from './pages/about-us.cmp.js.js';
+// import homePage from './pages/home-page.cmp.js';
+// import bookApp from './pages/books-app.cmp.js';
+// import bookDetails from './pages/book-details.cmp.js';
+// import aboutUs from './pages/about-us.cmp.js';
 
 const myRoutes = [
     {

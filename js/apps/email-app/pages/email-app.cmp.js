@@ -1,11 +1,23 @@
-
+import { emailService } from "../services/email-service.js";
 
 export default {
-    template: `
+  template: `
         <main class="email-app">
-            <book-filter @filter="setFilter"></book-filter>
-            <book-list :books="booksToShow" ></book-list>
-            <book-add ></book-add>
+            <h1>Email</h1>
         </main>
-    `
-}
+    `,
+  data() {
+    return {
+      emails: null,
+    };
+  },
+  created() {
+    emailService.getEmails().then((emails) => {
+      this.emails = emails;
+      console.log(emails);
+    });
+  },
+  components: {
+    emailService,
+  },
+};
