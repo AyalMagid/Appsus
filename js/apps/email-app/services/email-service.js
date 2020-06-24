@@ -8,9 +8,9 @@ export const emailService = {
 const KEY = 'emails'
 
 let gEmails = [
-    {subject: 'Wassap?', body: 'Pick up!', isRead: false, sentAt : 1551133930594, id:utilService.makeId()},
-    {subject: 'Why?', body: 'Pick up!', isRead: true, sentAt : 1421133930594, id:utilService.makeId()},
-    {subject: 'Hey?', body: 'Pick up!', isRead: false, sentAt : 1311133930594, id:utilService.makeId()}
+    {name: 'Moshe', subject: 'Wassap?', body: 'Pick up!', isRead: false, sentAt : 1551133930594, id:utilService.makeId()},
+    {name: 'Lior', subject: 'Why?', body: 'Pick up!', isRead: true, sentAt : 1421133930594, id:utilService.makeId()},
+    {name: 'Gil', subject: 'Hey?', body: 'Pick up!', isRead: false, sentAt : 1311133930594, id:utilService.makeId()}
 ]
 
 

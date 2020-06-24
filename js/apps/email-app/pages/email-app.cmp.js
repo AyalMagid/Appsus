@@ -1,4 +1,5 @@
 import emailList from '../cmps/email-list.cmp.js';
+import emailCompose from '../cmps/email-compose.cmp.js';
 import emailFilter from '../cmps/email-filter.cmp.js';
 import { emailService } from "../services/email-service.js";
 
@@ -8,6 +9,7 @@ export default {
             <h1>Email</h1>
             <email-filter @filter="setFilter"></email-filter>
             <email-list :emails="emailsToShow" ></email-list>
+            <email-compose/>
         </main>
     `,
   data() {
@@ -24,12 +26,12 @@ export default {
 },
   computed : {
     emailsToShow () {
-        // const filterBy = this.filterBy;
-        // if (!filterBy) return this.emails;
-        // let filteredEmails = this.emails.filter(email => {
-        //     return email.subject.toLowerCase().includes(filterBy.toLowerCase());
-        // });
-        return this.emails
+        const filterBy = this.filterBy;
+        if (!filterBy) return this.emails;
+        let filteredEmails = this.emails.filter(email => {
+            return email.subject.toLowerCase().includes(filterBy.toLowerCase());
+        });
+        return filteredEmails
     }
   },
   created() {
@@ -41,6 +43,7 @@ export default {
   components: {
     emailService,
     emailList,
-    emailFilter
+    emailFilter,
+    emailCompose
   },
 };
