@@ -1,7 +1,8 @@
 import {utilService} from '../../../../js/services.js/util-service.js';
 
 export const emailService = {
-    getEmails
+    getEmails,
+    getById
 }
 
 const KEY = 'emails'
@@ -19,4 +20,10 @@ function getEmails () {
     }
     return Promise.resolve(gEmails);
 }
+
+
+function getById(emailId) {
+    const email = gEmails.find(email => email.id === emailId);
+    return Promise.resolve(email);
+  }
 
