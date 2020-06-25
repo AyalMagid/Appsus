@@ -1,7 +1,7 @@
-import NoteImg from "./note-img.cmp.js";
-import NoteText from "./note-text.cmp.js";
-import NoteVideo from "./note-video.cmp.js";
-import NoteTodos from "./note-todos.cmp.js";
+import ImgNote from "./note-img.cmp.js";
+import TextNote from "./note-text.cmp.js";
+import VideoNote from "./note-video.cmp.js";
+import ListNote from "./note-todos.cmp.js";
 
 export default {
   props: ["notes"],
@@ -15,9 +15,9 @@ export default {
   computed: {},
   methods: {},
   components: {
-    NoteImg,
-    NoteText,
-    NoteTodos,
-    NoteVideo,
+    ImgNote,
+    TextNote,
+    VideoNote,
+    ListNote,
   },
 };

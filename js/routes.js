@@ -44,10 +44,10 @@ const myRoutes = [
     path: "/note",
     component: notesApp,
   },
-  // {
-  //   path: "/note/?:noteId",
-  //   component: addNoteExtended,
-  // },
+  {
+    path: "/note/:noteId?",
+    component: addNoteExtended,
+  },
 ];
 
 export const myRouter = new VueRouter({ routes: myRoutes });

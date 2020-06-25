@@ -14,8 +14,6 @@ export default {
     </div>
   </div>`,
   data() {
-    //      <Icon iconName="font" :isPressed="true" />
-
     return {
       showAddNote: false,
       noteType: "AddTextNote",

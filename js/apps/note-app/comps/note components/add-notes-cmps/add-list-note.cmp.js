@@ -29,7 +29,7 @@ export default {
       }
     },
     addNote() {
-      const type = "NoteTodos";
+      const type = "NoteList";
       this.items.pop();
       const note = { type, todos: this.items };
       this.$emit("addnote", note);
