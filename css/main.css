@@ -8,6 +8,7 @@
 @import "./note-app/cmps/note.css";
 @import "./note-app/header.css";
 @import "./note-app/cmps/add-note-extended.css";
+@import "./note-app/cmps/notes-app-container.css";
 
 /*Email APP CSS*/
 @import "./apps/email-app/email.css";

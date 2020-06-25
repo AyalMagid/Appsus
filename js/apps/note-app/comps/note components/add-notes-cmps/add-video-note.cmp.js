@@ -1,8 +1,9 @@
 export default {
-  props: ["note"],
+  props: ["note", "buttonText"],
   template: `<div class="flex align-center">
+      <iframe v-if="note" :src="note.info.url"></iframe>
       <input v-model="videoUrl"  placeholder="enter video url" />
-      <button @click="addNote">Add Note</button>
+      <button @click="addNote">{{buttonText}}</button>
       </div>`,
   data() {
     return {

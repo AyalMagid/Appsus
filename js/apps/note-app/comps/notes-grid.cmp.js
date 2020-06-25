@@ -5,7 +5,7 @@ import ListNote from "./note-todos.cmp.js";
 
 export default {
   props: ["notes"],
-  template: `<div>
+  template: `<div class="notes-container ">
       <component :is="note.type" :note="note" :key="index" v-for="(note,index) in notes"/>
       </div>`,
   data() {

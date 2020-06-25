@@ -5,21 +5,21 @@ export default {
   template: `<div 
    class="note-container" 
   :style="note.style"
-   @mouseover="show=true"
-   @mouseleave="show=false"
+   @mouseover="showEditingPanel=true"
+   @mouseleave="showEditingPanel=false"
    >
   <div v-if="showEdit">
     <add-note-extended @close="showEdit = !showEdit" :note="note" :noteType="'Add'+note.type"/>
   </div>
     <h1 @click="showEdit = !showEdit">image</h1>
     <img :src="note.info.url"/>
-    <note-editing  v-if="show" :note="note" />
     <p>{{note.info.title}}</p>
+    <note-editing  :note="note" />
   </div>`,
   data() {
     return {
       showEdit: false,
-      show: false,
+      showEditingPanel: false,
     };
   },
   created() {

@@ -5,17 +5,19 @@ const notes = [
     id: utilService.makeId(),
     type: "TextNote",
     isPinned: true,
-    info: { content: "Fullstack Me Baby!" },
+    info: { title: "sss", content: "Fullstack Me Baby!" },
+    style: { backgroundColor: "#8661C1", color: "#fff" },
   },
   {
     id: utilService.makeId(),
     type: "ImgNote",
     info: {
       url:
-        "https://i.pinimg.com/474x/f5/80/8e/f5808e68304fb8b44c8b6ed95d589e2c.jpg",
+        "https://scontent.foko1-1.fna.fbcdn.net/v/t1.0-9/p960x960/91513578_1431166250388563_3069995301231132672_o.jpg?_nc_cat=100&_nc_sid=19026a&_nc_ohc=g3FzMxsOBCMAX9X5g9E&_nc_ht=scontent.foko1-1.fna&_nc_tp=6&oh=fc9ca5a5b92894d651e96914fc83a66c&oe=5F193B5E",
       title: "Me playing Mi",
     },
-    style: { backgroundColor: "#D0CDD7" },
+    style: { backgroundColor: "#4B5267" },
+    isPinned: false,
   },
   {
     id: utilService.makeId(),
@@ -24,7 +26,8 @@ const notes = [
       url: "https://www.youtube.com/embed/6lsJliBnUfM",
       title: "Me playing Mi",
     },
-    style: { backgroundColor: "#00d" },
+    style: { backgroundColor: "#FFA630" },
+    isPinned: false,
   },
   {
     id: utilService.makeId(),
@@ -32,11 +35,12 @@ const notes = [
     info: {
       title: "How was it:",
       todos: [
-        { content: "Do that", doneAt: null },
-        { content: "Do this", doneAt: 187111111 },
+        { wasPressed: false, content: "hey", completed: false },
+        { wasPressed: false, content: "hey there", completed: false },
       ],
     },
     style: { backgroundColor: "#D9DBF1" },
+    isPinned: false,
   },
 ];
 const getNotes = () => {
@@ -58,6 +62,12 @@ const removeNote = (noteId) => {
   notes.splice(noteIndex, 1);
 };
 
+const duplicateNote = (note) => {
+  let duplicateNote = JSON.parse(JSON.stringify(note));
+  duplicateNote.id = utilService.makeId();
+  notes.unshift(duplicateNote);
+};
+
 const addNote = (note) => {
   const doesExist = note.id;
   console.log(doesExist);
@@ -77,4 +87,5 @@ export const notesService = {
   addNote,
   removeNote,
   changeColor,
+  duplicateNote,
 };

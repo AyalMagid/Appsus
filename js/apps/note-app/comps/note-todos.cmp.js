@@ -5,7 +5,7 @@ export default {
   template: `<div :style="note.style" class="note-container">
   <h1>todos</h1>
   <p>{{note.info.title}}<p/>
-  <todo-list :todos="note.info.todos"/>
+  <todo-list :noteId="note.id" :todos="note.info.todos"/>
       </div>`,
   data() {
     return {
