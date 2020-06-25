@@ -1,7 +1,30 @@
 @import "./cmps/email-preview.css";
+@import "./cmps/email-list.css";
+@import "./cmps/email-compose.css";
+@import "./cmps/email-details.css";
+@import "./cmps/email-status.css";
 @import "./cmps/side-nav.css";
 
 /* MAIN */
+
+/* HEADER - the rest in the main file */
+.app-header input, .app-header select {
+    height: 40px;
+}
+
+.app-header a{
+    color: yellow;
+}
+
+.app-header a:hover{
+    color: black;
+
+}
+
 .list-container {
     flex-grow: 1;
+    margin-left: 70px;
+    margin-right: 70px;
+ 
 }
+

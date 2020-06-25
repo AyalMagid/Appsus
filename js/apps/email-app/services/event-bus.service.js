@@ -1,4 +1,4 @@
-// export const LIST_TYPE = 'listMode'
+export const CHANGE_LIST = 'changeList'
 
 
 export const eventBus = new Vue();

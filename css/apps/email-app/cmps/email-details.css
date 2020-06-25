@@ -1,0 +1,28 @@
+.details-container{
+    flex-grow: 1;
+    margin-left: 70px;
+    margin-right: 70px;
+    border: solid white 1px;
+    background-color: rgb(54, 54, 54);
+    opacity: 0.8;
+    color: white;
+    border-radius: 20px;
+    box-shadow: 0px 2px 15px 7px #000000;
+}
+
+.details-container .title-container h2{
+    background-color: rgb(197, 207, 220);
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 20px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    border-radius: 20px 20px 0px 0;
+    color: black;
+    border-bottom: solid white 2px;
+    /* box-shadow: 0px 2px 15px 7px #000000; */
+}
+
+.mail-body{
+    flex-grow: 2;
+}

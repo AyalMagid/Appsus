@@ -17,13 +17,33 @@
 
 body {
   margin: 0;
+  background-image: url("../img/winner.jpg!d");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
+
 html {
   font-family: "Roboto", sans-serif;
 }
+
 * {
   box-sizing: border-box;
 }
 
+button {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+}
+
 .app-header {
+  background-color: rgb(184, 184, 184);
+  color: white;
+  margin: 0;
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  border-bottom: white solid 2px;
+  text-decoration: none;
 }

@@ -1,7 +1,9 @@
 import { emailService } from "../services/email-service.js";
-import {eventBus} from '../services/event-bus.service.js';
+import { eventBus, CHANGE_LIST } from "../services/event-bus.service.js";
 import sideNav from "../cmps/side-nav.cmp.js";
 import emailCompose from "../cmps/email-compose.cmp.js";
+import emailStatus from "../cmps/email-status.cmp.js";
+
 
 export default {
   template: `
@@ -17,25 +19,28 @@ export default {
                 </nav>
             </header>
             <!-- <router-link to="/email"><button class="close-email-btn">Back to Email list</button></router-link> -->
-            <div class="wrapper flex space-between">
-            <side-nav  @compose="changeComposeMode" ></side-nav>
+         <div class="main-wrapper flex space-between">
+            <div class="flex flex-col side-container">
+                 <!-- needs to send emails props but get it first so it can show the numbers-->
+                <email-status ></email-status> 
+                <side-nav @compose="changeComposeMode" @type="changeToList"/>
+            </div>
             <div class="flex flex-col details-container">
-                <div class="title-container flex scpase-between">
+                <div class="title-container">
                      <h2>{{email.subject}}</h2>
-                     <div class="btns-container">
-                        <button @click="removeEmail">Delete</button>
-                        <button>Full screen</button>
-                    </div>
+                     <div class="flex space-between">
+                         <h5>{{email.name}}{{email.address}}</h5>
+                     </div >
                 </div>
-                <div class="flex space-between">
-                    <h5>{{email.name}}{{email.address}}</h5>
-                    <button  @click="setReplayMode(true)" >Reply</button>
-                </div >
                 <div class="mail-body">
                     <p>{{email.body}}</p>
                 </div>   
+                <div class="btns-container flex">
+                    <button  @click="setReplayMode(true)" >Reply</button>
+                    <button @click="removeEmail">Delete</button>
                 </div>
             </div>
+         </div>
             <email-compose :isReply="isReply" :emailToEdit="email"  v-if="isComposeMode" @clsCompose="closeCompose"/>
         </section>
         `,
@@ -43,40 +48,45 @@ export default {
     return {
       email: null,
       isComposeMode: false,
-      isReply : false
+      isReply: false
     };
   },
   methods: {
     // so it will be possible to edit or write a new compose as well
-    setReplayMode(val){
-        this.isReply = val
-        this.changeComposeMode(val)
+    setReplayMode(val) {
+      this.isReply = val;
+      this.changeComposeMode(val);
     },
     changeComposeMode(val) {
-        this.isComposeMode = val;
+      this.isComposeMode = val;
     },
-    closeCompose (){
-        this.changeComposeMode(false)
-        this.isReply = false
+    closeCompose() {
+      this.changeComposeMode(false);
+      this.isReply = false;
     },
-    removeEmail(){
-        emailService.removeEmail(this.email.id)
-        this.$router.push ('/email')
+    removeEmail() {
+      emailService.removeEmail(this.email.id);
+      this.$router.push("/email");
+    },
+    changeToList(type){
+        eventBus.$emit(CHANGE_LIST, type)
+        this.$router.push("/email");
     }
   },
   created() {
     const { emailId } = this.$route.params;
-    emailService.getById(emailId).then(email => {
-        this.email = email;
-        this.email.isRead = true
+    emailService.getById(emailId).then((email) => {
+        console.log(email)
+      this.email = email;
+      this.email.isRead = true;
     });
- 
   },
   components: {
     eventBus,
     emailService,
     sideNav,
     emailCompose,
+    emailStatus
   },
 };
 

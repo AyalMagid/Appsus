@@ -1,3 +1,4 @@
+import emailStatus from "./email-status.cmp.js";
 import {eventBus} from '../services/event-bus.service.js';
 
 export default {
@@ -10,7 +11,6 @@ export default {
                 <h3 @click="emitListType('isStarred')">Starred</h3>
                 <h3 @click="emitListType('isSent')">Sent Mail</h3>
                 <h3 @click="emitListType('isDraft')">Drafts</h3>
-            <!-- <email-status> -->
             </div>
         </section>
       `,
@@ -24,6 +24,7 @@ export default {
     },
     components: {
         eventBus,
+        emailStatus
     }
   };
 

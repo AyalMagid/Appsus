@@ -29,6 +29,7 @@ function getEmails () {
 
 function getById(emailId) {
     const email = gEmails.find(email => email.id === emailId);
+    console.log(email)
     return Promise.resolve(email);
 }
 
@@ -58,11 +59,16 @@ function createEmail(txt, subject) {
         body: txt,
         isRead: false,
         sentAt: Date.now(),
-        id:utilService.makeId()
+        id:utilService.makeId(),
+        isInbox:false,
+        isStarred:false,
+        isSent:true,
+        isDraft:false
     }
 }
 
 function addEmail(email) {
+    email.isInbox=true,
     gEmails.unshift(email)
     utilService.saveToStorage(KEY, gEmails)
 }

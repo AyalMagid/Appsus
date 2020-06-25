@@ -1,5 +1,5 @@
 import { emailService } from "../services/email-service.js";
-import { eventBus } from "../services/event-bus.service.js";
+import { eventBus, CHANGE_LIST } from "../services/event-bus.service.js";
 import emailList from "../cmps/email-list.cmp.js";
 import emailCompose from "../cmps/email-compose.cmp.js";
 import emailFilter from "../cmps/email-filter.cmp.js";
@@ -20,9 +20,11 @@ export default {
                     <router-link to="/about">About</router-link> | 
                 </nav>
             </header>
-            <email-status :emails="emails"></email-status>
             <div class="main-container flex space-between">
-                <side-nav @compose="changeComposeMode" @type="changeListType"/>
+                <div class="flex flex-col side-container">
+                    <email-status :emails="emails"></email-status>
+                    <side-nav @compose="changeComposeMode" @type="changeListType"/>
+                </div>
                 <div class="list-container">
                     <email-list :emails="emailsToShow"  ></email-list>
                 </div>
@@ -35,7 +37,7 @@ export default {
       emails: null,
       filterBy: null,
       isComposeMode: false,
-      listType: "isInbox",
+      listType: null
     };
   },
   methods: {
@@ -62,12 +64,12 @@ export default {
   },
   computed: {
     emailsToShow() {
-      if (this.emails) {
-        this.emails = this.emails.filter((email) => email[this.listType]);
-      }
+      let filteredEmails;
+      if (!this.emails) return;
+      filteredEmails = this.emails.filter((email) => email[this.listType]);
       let filterBy = this.filterBy;
-      if (!filterBy) return this.emails;
-      let filteredEmails = this.emails.filter((email) => {
+      if (!filterBy) return filteredEmails;
+      filteredEmails = filteredEmails.filter((email) => {
         return email.subject
           .toLowerCase()
           .includes(filterBy.text.toLowerCase());
@@ -81,6 +83,11 @@ export default {
     },
   },
   created() {
+    eventBus.$on(CHANGE_LIST, (listType) => {
+      this.listType = listType;
+      console.log(this.listType)
+    });
+    if (!this.listType) {this.listType= "isInbox"}
     emailService.getEmails().then((emails) => {
       this.emails = emails;
     });
@@ -95,4 +102,3 @@ export default {
     emailStatus,
   },
 };
-
