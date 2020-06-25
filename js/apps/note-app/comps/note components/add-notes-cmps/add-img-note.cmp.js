@@ -1,9 +1,9 @@
 export default {
-  props: ["note"],
-  template: `<div :style="note.style" class="flex align-center">
+  props: ["note", "buttonText"],
+  template: `<div class="flex align-center">
   <img height="50px" :src="imgUrl">
       <input v-model="imgUrl"  placeholder="enter img url" />
-      <button @click="addNote">Add Note</button>
+      <button @click="addNote">{{buttonText}}</button>
       </div>`,
   data() {
     return {

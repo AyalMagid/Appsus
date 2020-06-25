@@ -1,12 +1,12 @@
 export default {
-  props: ["note"],
+  props: ["note", "buttonText"],
   template: `<div class="flex align-center">
-        <input v-model="content"  placeholder="enter img url" />
-        <button @click="addNote">Add Note</button>
+        <textarea  v-model="content"  placeholder="enter content" />
+        <button @click="addNote">{{buttonText}}</button>
         </div>`,
   data() {
     return {
-      content: "lorem ipsum",
+      content: "",
     };
   },
   created() {
