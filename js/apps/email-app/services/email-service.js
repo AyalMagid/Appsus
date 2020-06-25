@@ -6,15 +6,17 @@ export const emailService = {
     sortByTitle,
     sortByDate,
     createEmail,
-    addEmail
+    addEmail,
+    removeEmail
 }
 
 const KEY = 'emails'
 
+
 let gEmails = [
-    {address : '<ayal123@gEmails.com>', name: 'Moshe', subject: 'Wassap?', body: 'Pick up! haver sheli mahhhherrrrrrrrrr', isRead: false, sentAt : 1551133930594, id:utilService.makeId()},
-    {address : '<ayal123@gEmails.com>', name: 'Lior', subject: 'Why?', body: 'Pick up!', isRead: true, sentAt : 1421133930594, id:utilService.makeId()},
-    {address : '<ayal123@gEmails.com>', name: 'Gil', subject: 'Hey?', body: 'Pick up!', isRead: false, sentAt : 1311133930594, id:utilService.makeId()}
+    {address : '<ayal123@gEmails.com>', name: 'Moshe', subject: 'Wassap?', body: 'Pick up! haver sheli mahhhherrrrrrrrrr', isRead: false, sentAt : 1551133930594, id:utilService.makeId(), isInbox:true, isStarred:true, isSent:false, isDraft:false},
+    {address : '<ayal123@gEmails.com>', name: 'Lior', subject: 'Why?', body: 'Pick up!', isRead: true, sentAt : 1421133930594, id:utilService.makeId(), isInbox:true, isStarred:false, isSent:true, isDraft:false},
+    {address : '<ayal123@gEmails.com>', name: 'Gil', subject: 'Hey?', body: 'Pick up!', isRead: false, sentAt : 1311133930594, id:utilService.makeId(), isInbox:true, isStarred:true, isSent:true, isDraft:false}
 ]
 
 
@@ -48,10 +50,11 @@ function sortByDate(){
     })
 }
 
-function createEmail(txt) {
+function createEmail(txt, subject) {
     return {
         address: '<ayal123@gEmails.com>',
         name: 'Ayal',
+        subject,
         body: txt,
         isRead: false,
         sentAt: Date.now(),
@@ -60,7 +63,14 @@ function createEmail(txt) {
 }
 
 function addEmail(email) {
-    console.log(email)
     gEmails.unshift(email)
+    utilService.saveToStorage(KEY, gEmails)
+}
+
+function removeEmail(emailId) {
+    var idx = gEmails.findIndex(function (email) {
+        return email.id === emailId
+    })
+    gEmails.splice(idx, 1)
     utilService.saveToStorage(KEY, gEmails)
 }

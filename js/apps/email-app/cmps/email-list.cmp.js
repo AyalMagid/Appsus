@@ -1,4 +1,5 @@
 import emailPreview from "./email-preview.cmp.js";
+// import {eventBus} from '../services/event-bus.service.js';
 
 export default {
   props: ["emails"],
@@ -9,6 +10,7 @@ export default {
        </ul>
 </section>
     `,
+
   components: {
     emailPreview
   },

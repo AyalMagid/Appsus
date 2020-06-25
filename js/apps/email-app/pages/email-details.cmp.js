@@ -1,4 +1,5 @@
 import { emailService } from "../services/email-service.js";
+import {eventBus} from '../services/event-bus.service.js';
 import sideNav from "../cmps/side-nav.cmp.js";
 import emailCompose from "../cmps/email-compose.cmp.js";
 
@@ -22,7 +23,7 @@ export default {
                 <div class="title-container flex scpase-between">
                      <h2>{{email.subject}}</h2>
                      <div class="btns-container">
-                        <button>Delete</button>
+                        <button @click="removeEmail">Delete</button>
                         <button>Full screen</button>
                     </div>
                 </div>
@@ -57,13 +58,22 @@ export default {
     closeCompose (){
         this.changeComposeMode(false)
         this.isReply = false
+    },
+    removeEmail(){
+        emailService.removeEmail(this.email.id)
+        this.$router.push ('/email')
     }
   },
   created() {
     const { emailId } = this.$route.params;
-    emailService.getById(emailId).then((email) => (this.email = email));
+    emailService.getById(emailId).then(email => {
+        this.email = email;
+        this.email.isRead = true
+    });
+ 
   },
   components: {
+    eventBus,
     emailService,
     sideNav,
     emailCompose,

@@ -9,21 +9,30 @@ export default {
             <form>
                  <div class="flex flex-col details-container">
                      <div class="flex space-between">
-                        <h3 v-if="isReply">replay-sign{{emailToEdit.address}}</h3>
-                        <h3 v-else>New Message</h3>
+                         <template v-if="isReply">
+                            <h3>{{emailToEdit.address}}</h3>
+                            <input type="text"  v-model="subject" placeholder="Subject"/>
+                        </template>
+                         <h3 v-else>New Message</h3>
                         <button @click="emitClsCompose" class="cls-compose">x</button>
                     </div>
                       <template v-if="!isReply">
-                        <h4>To: </h4>
-                        <h4>Cc: </h4>
-                        <h4>Bcc: </h4>
-                        <h4>Subject: </h4>
+                        <div class="flex space-between">
+                            <input type="text" placeholder="To" />
+                            <div>
+                                <button v-show="!isCc" @click="isCc=true">Cc</button><button v-show="!isBcc" @click="isBcc=true">Bcc</button>
+                            </div>
+                        </div>
+                        <input v-show="isCc" type="text" placeholder="Cc"/>
+                        <input v-show="isBcc" type="text" placeholder="Bcc"/>
+                        <input type="text" placeholder="Subject" v-model="subject"/>
+                        <!-- <h4>Bcc: </h4> -->
                      </template>
                     <div class="email-body">
                         <textarea v-if="isReply" name="email-body" rows="20" cols="60" v-model="txt"></textarea>
                         <textarea v-else name="email-body" rows="4" cols="50" v-model="txt" ></textarea>
                         <button @click.prevent="sendEmail" lass="submit-btn" :disabled="!isValid" >Send</button>
-                        <button>Delete</button>
+                        <button @click.prevent="emitClsCompose">Delete</button>
                     </div>   
                  </div>
             </form>
@@ -32,6 +41,9 @@ export default {
   data() {
     return {
       txt: '',
+      subject: '',
+      isCc: false,
+      isBcc: false 
     };
   },
   computed: {
@@ -43,20 +55,26 @@ export default {
     methods: {
         emitClsCompose (){
             this.$emit('clsCompose', false);
+            this.isCc = false,
+            this.isBcc = false 
         },
         sendEmail(){
-            let newEmail = emailService.createEmail(this.txt)
-            emailService.addEmail(newEmail)
+            let email = emailService.createEmail(this.txt, this.subject)
+            // adding it to inbox as incoming mail and to sent-mails array
+            emailService.addEmail(email)
             this.emitClsCompose()
-        }
+        },
+
     },
     created (){
             if (this.emailToEdit && this.isReply) {
             this.txt = this.emailToEdit.body
+            this.subject = 'Re: ' + this.emailToEdit.subject
         }
     },
     components :{
-        emailService
+        emailService,
+        eventBus
     }
   
 };

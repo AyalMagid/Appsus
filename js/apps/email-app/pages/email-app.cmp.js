@@ -1,8 +1,10 @@
+import { emailService } from "../services/email-service.js";
+import { eventBus } from "../services/event-bus.service.js";
 import emailList from "../cmps/email-list.cmp.js";
 import emailCompose from "../cmps/email-compose.cmp.js";
 import emailFilter from "../cmps/email-filter.cmp.js";
 import sideNav from "../cmps/side-nav.cmp.js";
-import { emailService } from "../services/email-service.js";
+import emailStatus from "../cmps/email-status.cmp.js";
 
 export default {
   template: `
@@ -18,68 +20,79 @@ export default {
                     <router-link to="/about">About</router-link> | 
                 </nav>
             </header>
-            
-            <h3>unread emails: {{unredCount}}</h3>
+            <email-status :emails="emails"></email-status>
             <div class="main-container flex space-between">
-                <side-nav @compose="changeComposeMode" />
+                <side-nav @compose="changeComposeMode" @type="changeListType"/>
                 <div class="list-container">
-                    <email-list :emails="emailsToShow" ></email-list>
+                    <email-list :emails="emailsToShow"  ></email-list>
                 </div>
             </div>
-            <email-compose  v-if="isComposeMode" @clsCompose="changeComposeMode"/>
+            <email-compose  v-if="isComposeMode" @clsCompose="changeComposeMode" :isReply="false"/>
         </main>
     `,
   data() {
     return {
       emails: null,
       filterBy: null,
-    //   sort:''
-    isComposeMode : false
-    }
+      isComposeMode: false,
+      listType: "isInbox",
+    };
   },
   methods: {
     setFilter(filterBy) {
       this.filterBy = filterBy;
-      console.log(this.filterBy )
+      console.log(this.filterBy);
     },
     sortList(val) {
-        if (val==='title') {emailService.sortByTitle()}
-        else if (val==='date') {emailService.sortByDate()}
+      if (val === "title") {
+        emailService.sortByTitle();
+      } else if (val === "date") {
+        emailService.sortByDate();
+      }
     },
-    changeComposeMode (val){
-        this.isComposeMode = val;
+    changeComposeMode(val) {
+      this.isComposeMode = val;
     },
-
+    changeListType(type) {
+      emailService.getEmails().then((emails) => {
+        this.emails = emails;
+      });
+      this.listType = type;
+    },
   },
   computed: {
     emailsToShow() {
-      const filterBy = this.filterBy;
+      if (this.emails) {
+        this.emails = this.emails.filter((email) => email[this.listType]);
+      }
+      let filterBy = this.filterBy;
       if (!filterBy) return this.emails;
       let filteredEmails = this.emails.filter((email) => {
-        return email.subject.toLowerCase().includes(filterBy.text.toLowerCase());
+        return email.subject
+          .toLowerCase()
+          .includes(filterBy.text.toLowerCase());
       });
-      if (this.filterBy.emailsToShow === 'read') {
-      filteredEmails = filteredEmails.filter(email => email.isRead)}
-      else if (this.filterBy.emailsToShow === 'unread'){filteredEmails = filteredEmails.filter(email => !email.isRead)}
+      if (this.filterBy.emailsToShow === "read") {
+        filteredEmails = filteredEmails.filter((email) => email.isRead);
+      } else if (this.filterBy.emailsToShow === "unread") {
+        filteredEmails = filteredEmails.filter((email) => !email.isRead);
+      }
       return filteredEmails;
     },
-    unredCount(){
-        if (!this.emails) return
-        return this.emails.filter(email => !email.isRead).length
-    },
-
   },
   created() {
     emailService.getEmails().then((emails) => {
       this.emails = emails;
-      console.log(this.emails);
     });
   },
   components: {
     emailService,
+    eventBus,
     emailList,
     emailFilter,
     emailCompose,
-    sideNav
+    sideNav,
+    emailStatus,
   },
 };
+
