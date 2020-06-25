@@ -16,7 +16,7 @@ export default {
                 </nav>
             </header>
             <!-- <router-link to="/email"><button class="close-email-btn">Back to Email list</button></router-link> -->
-            <div class="wrapper flex">
+            <div class="wrapper flex space-between">
             <side-nav  @compose="changeComposeMode" ></side-nav>
             <div class="flex flex-col details-container">
                 <div class="title-container flex scpase-between">

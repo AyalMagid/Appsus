@@ -4,7 +4,7 @@ export default {
     props: ["emails"],
     template: `
         <section class="side-nav"> 
-            <div class="side-nav flex flex-col">
+            <div class="flex flex-col">
             <button @click="emitCompose">+Compose</button>
             <h3>Inbox</h3>
             <h3>Starred</h3>
