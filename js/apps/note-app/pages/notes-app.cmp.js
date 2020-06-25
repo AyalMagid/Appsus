@@ -1,8 +1,12 @@
 import "../comps/notes-grid.cmp.js";
 import { notesService } from "../services/note-service.js";
 import NotesGrid from "../comps/notes-grid.cmp.js";
+import Header from "../comps/Shared components/header.cmp.js";
+import AddNote from "../comps/add-note.cmp.js";
 export default {
   template: `<div>
+    <Header/>
+    <AddNote/>
     <notes-grid :notes="notes" />
     </div>`,
   data() {
@@ -17,6 +21,8 @@ export default {
   },
   components: {
     NotesGrid,
+    Header,
+    AddNote,
   },
   computed: {},
   methods: {},

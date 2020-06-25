@@ -2,18 +2,25 @@ const notes = [
   { type: "NoteText", isPinned: true, info: { content: "Fullstack Me Baby!" } },
   {
     type: "NoteImg",
-    info: { url: "http://some-img/me", title: "Me playing Mi" },
+    info: {
+      url:
+        "https://i.pinimg.com/474x/f5/80/8e/f5808e68304fb8b44c8b6ed95d589e2c.jpg",
+      title: "Me playing Mi",
+    },
     style: { backgroundColor: "#00d" },
   },
   {
     type: "NoteVideo",
-    info: { url: "http://some-img/me", title: "Me playing Mi" },
+    info: {
+      url: "https://www.youtube.com/embed/6lsJliBnUfM",
+      title: "Me playing Mi",
+    },
     style: { backgroundColor: "#00d" },
   },
   {
     type: "NoteTodos",
     info: {
-      label: "How was it:",
+      title: "How was it:",
       todos: [
         { content: "Do that", doneAt: null },
         { content: "Do this", doneAt: 187111111 },

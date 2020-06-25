@@ -4,7 +4,7 @@ export default {
   props: ["note"],
   template: `<div class="note-container">
   <h1>todos</h1>
-  <p>{{note.info.label}}<p/>
+  <p>{{note.info.title}}<p/>
   <todo-list :todos="note.info.todos"/>
       </div>`,
   data() {
