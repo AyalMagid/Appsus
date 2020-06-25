@@ -1,7 +1,9 @@
 export default {
   template: `<div>
       </div>`,
-  data() {},
+  data() {
+    return {};
+  },
   created() {},
   computed: {},
   methods: {},

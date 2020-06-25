@@ -3,6 +3,7 @@
 import emailApp from "./apps/email-app/pages/email-app.cmp.js";
 import emailDetails from "./apps/email-app/pages/email-details.cmp.js";
 import notesApp from "./apps/note-app/pages/notes-app.cmp.js";
+import addNoteExtended from "./apps/note-app/comps/add-note-extended.cmp.js";
 // import bookDetails from './pages/book-details.cmp.js';
 // import aboutUs from './pages/about-us.cmp.js';
 
@@ -43,10 +44,10 @@ const myRoutes = [
     path: "/note",
     component: notesApp,
   },
-  //   {
-  //     path: "/note/:noteId",
-  //     component: bookDetails,
-  //   },
+  {
+    path: "/note/:noteId?",
+    component: addNoteExtended,
+  },
 ];
 
 export const myRouter = new VueRouter({ routes: myRoutes });
