@@ -42,11 +42,9 @@ export default {
       this.filterBy = filterBy;
       console.log(this.filterBy )
     },
-    // why not gettting a value?
     sortList(val) {
-        console.log('val', val)
-        // if (val='date') {}
-        // else {}
+        if (val==='title') {emailService.sortByTitle()}
+        else if (val==='date') {emailService.sortByDate()}
     },
     changeComposeMode (val){
         this.isComposeMode = val;
