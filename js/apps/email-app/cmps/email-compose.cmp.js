@@ -1,3 +1,4 @@
+import { emailService } from "../services/email-service.js";
 import {eventBus} from '../services/event-bus.service.js';
 
 export default {
@@ -19,9 +20,9 @@ export default {
                         <h4>Subject: </h4>
                      </template>
                     <div class="email-body">
-                        <textarea v-if="isReply" name="email-body" rows="20" cols="60" v-model="replayTxt"></textarea>
+                        <textarea v-if="isReply" name="email-body" rows="20" cols="60" v-model="txt"></textarea>
                         <textarea v-else name="email-body" rows="4" cols="50" v-model="txt" ></textarea>
-                        <button class="submit-btn" :disabled="!isValid" >Send</button>
+                        <button @click.prevent="sendEmail" lass="submit-btn" :disabled="!isValid" >Send</button>
                         <button>Delete</button>
                     </div>   
                  </div>
@@ -31,21 +32,31 @@ export default {
   data() {
     return {
       txt: '',
-      replayTxt: this.emailToEdit.body
     };
   },
   computed: {
     isValid() {
       return this.txt ? true : false;
-    },
+    }
 
   },
     methods: {
         emitClsCompose (){
             this.$emit('clsCompose', false);
+        },
+        sendEmail(){
+            let newEmail = emailService.createEmail(this.txt)
+            emailService.addEmail(newEmail)
+            this.emitClsCompose()
         }
     },
     created (){
+            if (this.emailToEdit && this.isReply) {
+            this.txt = this.emailToEdit.body
+        }
+    },
+    components :{
+        emailService
     }
   
 };

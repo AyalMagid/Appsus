@@ -27,7 +27,7 @@ export default {
     },
     methods: {
         emitSort (){
-            this.$emit('sort', this.sortby);
+            this.$emit('sort', this.sortBy);
         },
         emitFilter() {
             this.$emit('filter', this.filterBy);

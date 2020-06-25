@@ -2,7 +2,11 @@ import {utilService} from '../../../../js/services.js/util-service.js';
 
 export const emailService = {
     getEmails,
-    getById
+    getById,
+    sortByTitle,
+    sortByDate,
+    createEmail,
+    addEmail
 }
 
 const KEY = 'emails'
@@ -26,3 +30,37 @@ function getById(emailId) {
     return Promise.resolve(email);
 }
 
+function sortByTitle() {
+    gEmails.sort((a, b) => {
+        if (a.subject > b.subject) {
+            return 1
+        } else {
+            return -1
+        }
+    })
+}
+
+// Turn your strings into dates, and then subtract them
+// to get a value that is either negative, positive, or zero.
+function sortByDate(){
+    gEmails.sort((a,b) =>{
+        return new Date(b.sentAt) - new Date(a.sentAt);
+    })
+}
+
+function createEmail(txt) {
+    return {
+        address: '<ayal123@gEmails.com>',
+        name: 'Ayal',
+        body: txt,
+        isRead: false,
+        sentAt: Date.now(),
+        id:utilService.makeId()
+    }
+}
+
+function addEmail(email) {
+    console.log(email)
+    gEmails.unshift(email)
+    utilService.saveToStorage(KEY, gEmails)
+}
