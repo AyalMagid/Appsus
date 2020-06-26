@@ -23,6 +23,11 @@
     /* box-shadow: 0px 2px 15px 7px #000000; */
 }
 
+/* not working */
+.details-container .title-container .address{
+    border-bottom: solid rgb(197, 207, 220) 1px;
+}
+
 .mail-body{
     flex-grow: 2;
 }

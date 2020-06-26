@@ -7,7 +7,7 @@ export default {
 
         <section class="email-compose">
             <form>
-                 <div class="flex flex-col details-container">
+                 <div class="flex flex-col compose-container">
                      <div class="flex space-between">
                          <template v-if="isReply">
                             <h3>{{emailToEdit.address}}</h3>
@@ -29,10 +29,12 @@ export default {
                         <!-- <h4>Bcc: </h4> -->
                      </template>
                     <div class="email-body">
-                        <textarea v-if="isReply" name="email-body" rows="20" cols="60" v-model="txt"></textarea>
-                        <textarea v-else name="email-body" rows="4" cols="50" v-model="txt" ></textarea>
-                        <button @click.prevent="sendEmail" lass="submit-btn" :disabled="!isValid" >Send</button>
-                        <button @click.prevent="emitClsCompose">Delete</button>
+                        <textarea v-if="isReply" name="email-body"  v-model="txt"></textarea>
+                        <textarea v-else name="email-body"  v-model="txt" ></textarea>
+                        <div class="btns-container">
+                            <button @click.prevent="sendEmail" class="submit-btn" :disabled="!isValid" >Send</button>
+                            <button class="delete-btn" @click.prevent="emitClsCompose">Delete</button>
+                        </div>
                     </div>   
                  </div>
             </form>

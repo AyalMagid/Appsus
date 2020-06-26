@@ -28,14 +28,14 @@ export default {
             <div class="flex flex-col details-container">
                 <div class="title-container">
                      <h2>{{email.subject}}</h2>
-                     <div class="flex space-between">
+                     <div class="flex space-between address">
                          <h5>{{email.name}}{{email.address}}</h5>
                      </div >
                 </div>
                 <div class="mail-body">
                     <p>{{email.body}}</p>
                 </div>   
-                <div class="btns-container flex">
+                <div class="btns-container">
                     <button  @click="setReplayMode(true)" >Reply</button>
                     <button @click="removeEmail">Delete</button>
                 </div>

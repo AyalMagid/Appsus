@@ -1,7 +1,14 @@
-export const CHANGE_LIST = 'changeList'
+export const CHANGE_LIST = 'change-list'
 
 
-export const eventBus = new Vue();
+export const bus = new Vue();
+
+export const eventBus = bus;
 
 // export const eventBus = bus;
+
+
+
+
+
 
