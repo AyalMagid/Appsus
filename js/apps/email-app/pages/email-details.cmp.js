@@ -1,5 +1,5 @@
 import { emailService } from "../services/email-service.js";
-import { eventBus } from "../services/event-bus.service.js";
+import { eventBus} from "../services/event-bus.service.js";
 import sideNav from "../cmps/side-nav.cmp.js";
 import emailCompose from "../cmps/email-compose.cmp.js";
 import emailStatus from "../cmps/email-status.cmp.js";
@@ -12,7 +12,7 @@ export default {
                 <h1>Appsus</h1>
                 <nav>
                     <router-link to="/">Home</router-link> |
-                    <router-link to="/email">MisterEmail</router-link> | 
+                    <router-link to="/email/list/isInbox">MisterEmail</router-link> | 
                     <router-link to="/note">Miss Notes</router-link> | 
                     <!-- <router-link to="/book">Miss Books</router-link> |  -->
                     <router-link to="/about">About</router-link> | 
@@ -48,7 +48,8 @@ export default {
     return {
       email: null,
       isComposeMode: false,
-      isReply: false
+      isReply: false,
+      listType: null
     };
   },
   methods: {
@@ -65,12 +66,13 @@ export default {
       this.isReply = false;
     },
     removeEmail() {
-      emailService.removeEmail(this.email.id);
-      this.$router.push({name:'email',params:{type:'isInbox'}} );
+      emailService.removeEmail(this.email.id, this.listType);
+      this.$router.push({name:'email',params:{type:this.listType}} );
     }
   },
   created() {
-    const { emailId } = this.$route.params;
+      const { emailId, type } = this.$route.params;
+      this.listType = type
     emailService.getById(emailId).then((email) => {
         console.log(email)
       this.email = email;

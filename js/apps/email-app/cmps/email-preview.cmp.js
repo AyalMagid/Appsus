@@ -1,8 +1,8 @@
 
 export default {
-    props: ['email'],
+    props: ['email','listType'],
     template: `
-         <router-link :to="'/email/' + email.id">
+         <router-link :to="'/email/list/'+ listType + '/' + email.id">
              <li :class="isRead" class="email-preview flex space-between clean-list">
                 <div>
                  <input @click.stop type="checkbox" v-model="email.isRead" title="Mark as Read/Unread">

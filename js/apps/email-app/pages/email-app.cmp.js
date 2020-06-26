@@ -1,5 +1,4 @@
 import { emailService } from "../services/email-service.js";
-import { eventBus } from "../services/event-bus.service.js";
 import emailList from "../cmps/email-list.cmp.js";
 import emailCompose from "../cmps/email-compose.cmp.js";
 import emailFilter from "../cmps/email-filter.cmp.js";
@@ -10,7 +9,7 @@ export default {
   template: `
         <main class="email-app" >
         <header class="app-header flex align-center space-between">
-                <h1>Appsus</h1>
+                <h1 class="logo">Appsus</span></h1>
                 <email-filter @sort="sortList" @filter="setFilter" ></email-filter>
                 <nav>
                     <router-link to="/">Home</router-link> |
@@ -26,7 +25,7 @@ export default {
                     <side-nav @compose="changeComposeMode" />
                 </div>
                 <div class="list-container">
-                    <email-list :emails="emailsToShow"  ></email-list>
+                    <email-list :emails="emailsToShow" :listType="listType"></email-list>
                 </div>
             </div>
             <email-compose  v-if="isComposeMode" @clsCompose="changeComposeMode" :isReply="false"/>

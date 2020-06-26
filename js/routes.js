@@ -26,7 +26,7 @@ const myRoutes = [
     component: emailApp,
   },
   {
-    path: "/email/:emailId",
+    path: "/email/list/:type/:emailId",
     component: emailDetails,
   },
 
