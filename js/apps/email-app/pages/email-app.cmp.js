@@ -3,6 +3,7 @@ import emailList from "../cmps/email-list.cmp.js";
 import emailCompose from "../cmps/email-compose.cmp.js";
 import emailFilter from "../cmps/email-filter.cmp.js";
 import sideNav from "../cmps/side-nav.cmp.js";
+import userMsg from "../cmps/user-msg.cmp.js";
 import emailStatus from "../cmps/email-status.cmp.js";
 
 export default {
@@ -10,6 +11,7 @@ export default {
         <main class="email-app" >
         <header class="app-header flex align-center space-between">
                 <h1 class="logo">Appsus</span></h1>
+                <user-msg></user-msg>
                 <email-filter @sort="sortList" @filter="setFilter" ></email-filter>
                 <nav>
                     <router-link to="/">Home</router-link> |
@@ -36,7 +38,7 @@ export default {
       emails: null,
       filterBy: null,
       isComposeMode: false,
-      listType: null
+      listType: null,
     };
   },
   methods: {
@@ -76,18 +78,18 @@ export default {
     },
   },
   created() {
-      const {type} = this.$route.params 
-      this.listType = type
-      emailService.getEmails().then((emails) => {
+    const { type } = this.$route.params;
+    this.listType = type;
+    emailService.getEmails().then((emails) => {
       this.emails = emails;
     });
   },
   watch: {
     "$route.params.type"() {
-        const {type} = this.$route.params 
-        this.listType = type
-        }
+      const { type } = this.$route.params;
+      this.listType = type;
     },
+  },
   components: {
     emailService,
     emailList,
@@ -95,5 +97,6 @@ export default {
     emailCompose,
     sideNav,
     emailStatus,
+    userMsg
   },
 };

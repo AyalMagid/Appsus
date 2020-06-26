@@ -13,6 +13,7 @@
   opacity: 0.7;
   color: white;
   box-shadow: 0px 2px 6px 5px #000000;
+  padding-left: 15px;
 }
 
 .email-preview:hover {
@@ -36,4 +37,11 @@
 .star:checked:before {
    content: "\2606";
    /* position: absolute; */
+}
+
+.email-preview button {
+    margin-right: 30px;
+    margin-left: 30px;
+    /* padding-top: 5px; */
+    height: 30px;
 }

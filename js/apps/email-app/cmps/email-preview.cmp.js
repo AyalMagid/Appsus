@@ -5,8 +5,8 @@ export default {
          <router-link :to="'/email/list/'+ listType + '/' + email.id">
              <li :class="isRead" class="email-preview flex space-between clean-list">
                 <div>
-                 <input @click.stop type="checkbox" v-model="email.isRead" title="Mark as Read/Unread">
-                 <input @click.stop class="star" type="checkbox" title="bookmark starred Emails">
+                    <input @click.stop="toggleStarred" class="star" type="checkbox" title="bookmark starred Emails">
+                    <input @click.stop type="checkbox" v-model="email.isRead" title="Mark as Read/Unread">
                 </div>
                     <p>{{email.name}}</p>
                     <p>{{email.subject}}</p>
@@ -26,6 +26,11 @@ export default {
             sentAt () {
                 let date = new Date(this.email.sentAt).toString()
                 return date
+            }
+        },
+        methods : {
+            toggleStarred (){
+                this.email.isStarred = !this.email.isStarred
             }
         }
 }

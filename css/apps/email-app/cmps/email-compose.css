@@ -31,6 +31,7 @@
 textarea {
     width:100%;
     height: 420px;
+    border: none;
 }
 
 .btns-container {
@@ -40,8 +41,28 @@ textarea {
     margin-bottom: 0;
 }
 
-.btns-container .submit-btn, .btns-container .delete-btn{
-    width:50%;
-    height: 100%;
-    display: inline-block;
+.btns-container{
+    background-color: rgb(219, 231, 105);;
+}
+
+button .submit-button{
+    padding-top: 8px;
+    padding-left: 15px;
+}
+
+.cls-btn{
+    padding-right: 10px;
+    padding-top: 5px;
+}
+
+.send-btn {
+    margin-left: 5px;
+    color:black;
+}
+
+
+.email-compose button{
+    border: none;
+    border-radius: 0 20px 0 0;
+    background-color: rgb(219, 231, 105);;
 }

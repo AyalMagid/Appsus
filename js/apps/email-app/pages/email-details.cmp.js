@@ -1,7 +1,7 @@
 import { emailService } from "../services/email-service.js";
-import { eventBus} from "../services/event-bus.service.js";
 import sideNav from "../cmps/side-nav.cmp.js";
 import emailCompose from "../cmps/email-compose.cmp.js";
+import userMsg from "../cmps/user-msg.cmp.js";
 import emailStatus from "../cmps/email-status.cmp.js";
 
 
@@ -9,6 +9,7 @@ export default {
   template: `
         <section v-if="email" class="email-details">
         <header class="app-header flex align-center space-between">
+                <user-msg></user-msg>
                 <h1>Appsus</h1>
                 <nav>
                     <router-link to="/">Home</router-link> |
@@ -36,8 +37,8 @@ export default {
                     <p>{{email.body}}</p>
                 </div>   
                 <div class="btns-container">
-                    <button  @click="setReplayMode(true)" >Reply</button>
-                    <button @click="removeEmail">Delete</button>
+                    <button  @click="setReplayMode(true)" ><i class="fa fa-reply" aria-hidden="true"></i></button>
+                    <button @click="removeEmail"><i class="fa fa-trash" aria-hidden="true"></i></button>
                 </div>
             </div>
          </div>
@@ -78,27 +79,13 @@ export default {
       this.email = email;
       this.email.isRead = true;
     });
+    
   },
   components: {
-    eventBus,
     emailService,
     sideNav,
     emailCompose,
-    emailStatus
+    emailStatus,
+    userMsg
   },
 };
-
-// <section v-if="email" class="email-details">
-// <router-link to="/email"><button class="close-email-btn">Back to Email list</button></router-link>
-// <div class="flex flex-col details-container">
-//     <h3>New Message</h3>
-//     <h4>To: </h4>
-//     <h4>Cc: </h4>
-//     <h4>Bcc: </h4>
-//     <h4>Subject: </h4>
-//     <div class="mail-body">
-//         <button>Send</button>
-//         <button>Delete</button>
-//     </div>
-// </div>
-// </section>

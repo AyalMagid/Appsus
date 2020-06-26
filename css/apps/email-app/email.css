@@ -3,13 +3,14 @@
 @import "./cmps/email-compose.css";
 @import "./cmps/email-details.css";
 @import "./cmps/email-status.css";
+@import "../book-app/user-msg.css";
 @import "./cmps/side-nav.css";
 
 /* MAIN */
 
 /* HEADER - the rest in the main file */
 .app-header input, .app-header select {
-    height: 40px;
+    height: 30px;
 }
 
 .app-header a{
@@ -27,3 +28,6 @@
     margin-right: 70px;
 }
 
+i {
+    font-size: 2rem;
+ }

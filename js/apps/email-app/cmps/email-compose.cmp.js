@@ -1,5 +1,5 @@
 import { emailService } from "../services/email-service.js";
-import {eventBus} from '../services/event-bus.service.js';
+import {eventBus, EVENT_SHOW_MSG} from '../services/event-bus.service.js';
 
 export default {
   props: ['emailToEdit', 'isReply'],
@@ -14,7 +14,7 @@ export default {
                             <input type="text"  v-model="subject" placeholder="Subject"/>
                         </template>
                          <h3 v-else>New Message</h3>
-                        <button @click="emitClsCompose" class="cls-compose">x</button>
+                        <button @click="emitClsCompose" class="cls-compose"><i class="cls-btn fa fa-window-close" aria-hidden="true"></i></button>
                     </div>
                       <template v-if="!isReply">
                         <div class="flex space-between">
@@ -32,8 +32,8 @@ export default {
                         <textarea v-if="isReply" name="email-body"  v-model="txt"></textarea>
                         <textarea v-else name="email-body"  v-model="txt" ></textarea>
                         <div class="btns-container">
-                            <button @click.prevent="sendEmail" class="submit-btn" :disabled="!isValid" >Send</button>
-                            <button class="delete-btn" @click.prevent="emitClsCompose">Delete</button>
+                            <button @click.prevent="sendEmail" class="submit-btn" :disabled="!isValid" ><i class="fa fa-paper-plane send-btn" aria-hidden="true"></i></button>
+                            <button class="delete-btn" @click.prevent="emitClsCompose"><i class="fa fa-trash" aria-hidden="true"></i></button>
                         </div>
                     </div>   
                  </div>
@@ -65,6 +65,7 @@ export default {
             // adding it to inbox as incoming mail and to sent mail also
             emailService.addEmail(email)
             this.emitClsCompose()
+            eventBus.$emit(EVENT_SHOW_MSG, `${this.subject} was sent!`);
         },
 
     },
