@@ -1,5 +1,5 @@
 import { emailService } from "../services/email-service.js";
-import { eventBus, CHANGE_LIST } from "../services/event-bus.service.js";
+import { eventBus } from "../services/event-bus.service.js";
 import sideNav from "../cmps/side-nav.cmp.js";
 import emailCompose from "../cmps/email-compose.cmp.js";
 import emailStatus from "../cmps/email-status.cmp.js";
@@ -23,7 +23,7 @@ export default {
             <div class="flex flex-col side-container">
                  <!-- needs to send emails props but get it first so it can show the numbers-->
                 <email-status ></email-status> 
-                <side-nav @compose="changeComposeMode" @type="changeToList"/>
+                <side-nav @compose="changeComposeMode"/>
             </div>
             <div class="flex flex-col details-container">
                 <div class="title-container">
@@ -66,11 +66,7 @@ export default {
     },
     removeEmail() {
       emailService.removeEmail(this.email.id);
-      this.$router.push("/email");
-    },
-    changeToList(type){
-        eventBus.$emit(CHANGE_LIST, type)
-        this.$router.push("/email");
+      this.$router.push({name:'email',params:{type:'isInbox'}} );
     }
   },
   created() {
