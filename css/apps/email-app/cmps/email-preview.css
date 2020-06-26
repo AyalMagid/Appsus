@@ -20,3 +20,20 @@
   background-color: rgb(163, 163, 163);
   color: yellow;
 }
+
+.star {
+    visibility:hidden;
+    font-size:25px;
+    cursor:pointer;
+}
+.star:before {
+   content: "\2605";
+   color: white;
+   margin-top: 5px;
+   position: absolute;
+   visibility:visible;
+}
+.star:checked:before {
+   content: "\2606";
+   /* position: absolute; */
+}

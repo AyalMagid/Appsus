@@ -7,7 +7,8 @@ export const emailService = {
     sortByDate,
     createEmail,
     addEmail,
-    removeEmail
+    removeEmail,
+    addToOtherType
 }
 
 const KEY = 'emails'
@@ -15,8 +16,8 @@ const KEY = 'emails'
 
 let gEmails = [
     {address : '<ayal123@gEmails.com>', name: 'Moshe', subject: 'Wassap?', body: 'Pick up! haver sheli mahhhherrrrrrrrrr', isRead: false, sentAt : 1551133930594, id:utilService.makeId(), isInbox:true, isStarred:true, isSent:false, isDraft:false},
-    {address : '<ayal123@gEmails.com>', name: 'Lior', subject: 'Why?', body: 'Pick up!', isRead: true, sentAt : 1421133930594, id:utilService.makeId(), isInbox:true, isStarred:false, isSent:true, isDraft:false},
-    {address : '<ayal123@gEmails.com>', name: 'Gil', subject: 'Hey?', body: 'Pick up!', isRead: false, sentAt : 1311133930594, id:utilService.makeId(), isInbox:true, isStarred:true, isSent:true, isDraft:false}
+    {address : '<ayal123@gEmails.com>', name: 'Lior', subject: 'Why?', body: 'Pick up!', isRead: true, sentAt : 1421133930594, id:utilService.makeId(), isInbox:true, isStarred:false, isSent:false, isDraft:false},
+    {address : '<ayal123@gEmails.com>', name: 'Gil', subject: 'Hey?', body: 'Pick up!', isRead: false, sentAt : 1311133930594, id:utilService.makeId(), isInbox:true, isStarred:true, isSent:false, isDraft:false}
 ]
 
 
@@ -70,6 +71,11 @@ function createEmail(txt, subject) {
 function addEmail(email) {
     email.isInbox=true,
     gEmails.unshift(email)
+    utilService.saveToStorage(KEY, gEmails)
+}
+
+function addToOtherType (type) {
+    gEmails[type] = true
     utilService.saveToStorage(KEY, gEmails)
 }
 

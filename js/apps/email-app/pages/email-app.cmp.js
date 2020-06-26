@@ -85,9 +85,9 @@ export default {
   created() {
     eventBus.$on(CHANGE_LIST, (listType) => {
       this.listType = listType;
-      console.log(this.listType)
+      // console.log(this.listType)
     });
-    if (!this.listType) {this.listType= "isInbox"}
+    if (!this.listType) {this.listType='isInbox'}
     emailService.getEmails().then((emails) => {
       this.emails = emails;
     });

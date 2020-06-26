@@ -62,7 +62,7 @@ export default {
         },
         sendEmail(){
             let email = emailService.createEmail(this.txt, this.subject)
-            // adding it to inbox as incoming mail and to sent-mails array
+            // adding it to inbox as incoming mail and to sent mail also
             emailService.addEmail(email)
             this.emitClsCompose()
         },

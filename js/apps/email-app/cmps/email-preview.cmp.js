@@ -4,7 +4,10 @@ export default {
     template: `
          <router-link :to="'/email/' + email.id">
              <li :class="isRead" class="email-preview flex space-between clean-list">
-                    <input @click.stop type="checkbox" v-model="email.isRead" title="Mark as Read/Unread">
+                <div>
+                 <input @click.stop type="checkbox" v-model="email.isRead" title="Mark as Read/Unread">
+                 <input @click.stop class="star" type="checkbox" title="bookmark starred Emails">
+                </div>
                     <p>{{email.name}}</p>
                     <p>{{email.subject}}</p>
                     <p>{{sentAt}}</p>
