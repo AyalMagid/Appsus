@@ -24,10 +24,10 @@
 
 .list-container {
     flex-grow: 1;
-    margin-left: 70px;
+    margin-left: 20px;
     margin-right: 70px;
 }
 
-i {
+.i-btns {
     font-size: 2rem;
  }

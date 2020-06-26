@@ -32,6 +32,11 @@ html {
 
 button {
   cursor: pointer;
+  outline: none; 
+}
+
+input{
+  outline: none;
 }
 
 a {
@@ -46,4 +51,8 @@ a {
   padding: 10px 20px;
   border-bottom: white solid 2px;
   text-decoration: none;
+}
+
+.app-header .logo {
+  margin-right: 40px;
 }

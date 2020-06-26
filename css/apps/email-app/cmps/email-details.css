@@ -23,6 +23,10 @@
     /* box-shadow: 0px 2px 15px 7px #000000; */
 }
 
+.title-container h5, .details-container .mail-body{
+    padding-left: 20px;
+}
+
 /* not working */
 .details-container .title-container .address{
     border-bottom: solid rgb(197, 207, 220) 1px;
@@ -30,4 +34,8 @@
 
 .mail-body{
     flex-grow: 2;
+}
+
+.reply-btn{
+    border-radius: 0 0 0 20px;
 }

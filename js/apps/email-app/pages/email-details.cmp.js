@@ -36,9 +36,9 @@ export default {
                 <div class="mail-body">
                     <p>{{email.body}}</p>
                 </div>   
-                <div class="btns-container">
-                    <button  @click="setReplayMode(true)" ><i class="fa fa-reply" aria-hidden="true"></i></button>
-                    <button @click="removeEmail"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                <div >
+                    <button  @click="setReplayMode(true)" class="reply-btn"><i class="fa fa-reply i-btns" aria-hidden="true"></i></button>
+                    <button @click="removeEmail"><i class="fa fa-trash i-btns" aria-hidden="true"></i></button>
                 </div>
             </div>
          </div>

@@ -10,7 +10,7 @@ export default {
   template: `
         <main class="email-app" >
         <header class="app-header flex align-center space-between">
-                <h1 class="logo">Appsus</span></h1>
+                <h1 class="logo">Appsus</h1>
                 <user-msg></user-msg>
                 <email-filter @sort="sortList" @filter="setFilter" ></email-filter>
                 <nav>

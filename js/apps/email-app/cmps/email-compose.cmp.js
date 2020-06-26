@@ -14,11 +14,11 @@ export default {
                             <input type="text"  v-model="subject" placeholder="Subject"/>
                         </template>
                          <h3 v-else>New Message</h3>
-                        <button @click="emitClsCompose" class="cls-compose"><i class="cls-btn fa fa-window-close" aria-hidden="true"></i></button>
+                        <button @click="emitClsCompose" class="cls-compose"><i class="cls-btn i-btns fa fa-window-close" aria-hidden="true"></i></button>
                     </div>
                       <template v-if="!isReply">
                         <div class="flex space-between">
-                            <input type="text" placeholder="To" />
+                            <input class="email-to" type="text" placeholder="To" />
                             <div>
                                 <button v-show="!isCc" @click="isCc=true">Cc</button><button v-show="!isBcc" @click="isBcc=true">Bcc</button>
                             </div>
@@ -26,14 +26,13 @@ export default {
                         <input v-show="isCc" type="text" placeholder="Cc"/>
                         <input v-show="isBcc" type="text" placeholder="Bcc"/>
                         <input type="text" placeholder="Subject" v-model="subject"/>
-                        <!-- <h4>Bcc: </h4> -->
                      </template>
                     <div class="email-body">
                         <textarea v-if="isReply" name="email-body"  v-model="txt"></textarea>
                         <textarea v-else name="email-body"  v-model="txt" ></textarea>
-                        <div class="btns-container">
-                            <button @click.prevent="sendEmail" class="submit-btn" :disabled="!isValid" ><i class="fa fa-paper-plane send-btn" aria-hidden="true"></i></button>
-                            <button class="delete-btn" @click.prevent="emitClsCompose"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                        <div class="btns-container" >
+                            <button @click.prevent="sendEmail" class="send-btn" :disabled="!isValid" ><i class="i-btns fa fa-paper-plane " aria-hidden="true"></i></button>
+                            <button class="delete-btn" @click.prevent="emitClsCompose"><i class="i-btns fa fa-trash" aria-hidden="true"></i></button>
                         </div>
                     </div>   
                  </div>
@@ -51,7 +50,11 @@ export default {
   computed: {
     isValid() {
       return this.txt ? true : false;
-    }
+    },
+    // replyStyle (){
+    //     if (this.isReply)
+       
+    // }
 
   },
     methods: {
