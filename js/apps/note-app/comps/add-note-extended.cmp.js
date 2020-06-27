@@ -89,8 +89,8 @@ export default {
       }
       notesService.addNote(note);
       this.$emit("addnote");
-      eventBus.$emit("displayMessage", "Note Added");
-      if (this.$route.params.type) {
+      // eventBus.$emit("displayMessage", "Note Added");
+      if (this.$route.params.title) {
         this.$router.push("/note");
       }
     },

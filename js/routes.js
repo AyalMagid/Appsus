@@ -4,16 +4,17 @@ import emailApp from "./apps/email-app/pages/email-app.cmp.js";
 import emailDetails from "./apps/email-app/pages/email-details.cmp.js";
 import notesApp from "./apps/note-app/pages/notes-app.cmp.js";
 import addNoteExtended from "./apps/note-app/comps/add-note-extended.cmp.js";
+import homePage from "./pages/homepage.js";
 // import bookDetails from './pages/book-details.cmp.js';
 // import aboutUs from './pages/about-us.cmp.js';
 
 const myRoutes = [
   // MAIN
 
-  // {
-  //     path: '/',
-  //     component: homePage
-  // },
+  {
+    path: "/",
+    component: homePage,
+  },
   // {
   //     path: '/about',
   //     component: aboutUs
@@ -46,6 +47,7 @@ const myRoutes = [
     component: notesApp,
   },
   {
+    name: "addEmailNote",
     path: "/note/createTodo/:title/:content",
     component: addNoteExtended,
   },
