@@ -23,6 +23,7 @@
 }
 
 .list-container {
+<<<<<<< HEAD
   flex-grow: 1;
   margin-left: 70px;
   margin-right: 70px;
@@ -31,3 +32,13 @@
 /* i {
   font-size: 2rem;
 } */
+=======
+    flex-grow: 1;
+    margin-left: 20px;
+    margin-right: 70px;
+}
+
+.i-btns {
+    font-size: 2rem;
+ }
+>>>>>>> 2457d5e3061afcb5d7ff9cafa02af45f8a51e44d

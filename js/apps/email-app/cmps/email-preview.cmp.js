@@ -4,9 +4,9 @@ export default {
     template: `
          <router-link :to="'/email/list/'+ listType + '/' + email.id">
              <li :class="isRead" class="email-preview flex space-between clean-list">
-                <div>
+                <div class="checkboxes">
                     <input @click.stop="toggleStarred" class="star" type="checkbox" title="bookmark starred Emails">
-                    <input @click.stop type="checkbox" v-model="email.isRead" title="Mark as Read/Unread">
+                    <input @click.stop type="checkbox" class="checkbox" v-model="email.isRead" title="Mark as Read/Unread">
                 </div>
                     <p>{{email.name}}</p>
                     <p>{{email.subject}}</p>
