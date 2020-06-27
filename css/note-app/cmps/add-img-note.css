@@ -1,0 +1,15 @@
+.add-img-note-container {
+  display: flex;
+  flex-direction: column;
+}
+.image-note-add-container {
+  display: flex;
+  align-items: center;
+}
+.image-note-add-container i {
+  margin-left: auto;
+  margin-right: 2rem;
+}
+.add-image-note-image {
+  margin: 0.5rem 0;
+}

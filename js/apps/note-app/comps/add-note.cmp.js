@@ -1,27 +1,49 @@
 import AddNoteExtended from "./add-note-extended.cmp.js";
 import Icon from "../UI elements/icon.cmp.js";
+import SnackbarIcon from "./Shared components/icon-snackbar.js";
 export default {
-  template: `<div >
-    <div v-if="!showAddNote" class="flex align-center">
-      <input @click="showAddNote = !showAddNote" type="text" placeholder="what would you like to do?" >
-    <i @click="setNoteType('AddTextNote')" class="fas fa-font"></i>
-      <i @click="setNoteType('AddVideoNote')" class="fab fa-youtube"></i>
-      <i @click="setNoteType('AddImgNote')" class="fas  fa-image"></i>
-      <i @click="setNoteType('AddListNote')" class="fas fa-list"></i>
+  template: `
+  <div>
+    <div v-if="!showAddNote" class="add-note-container">
+      <input @click="showAddNote = !showAddNote" type="text" placeholder="Type Something..."/>
+      <div add-note-icons-container>   
+        <i @mouseout="toggleSnackbar('text')" @mouseover="toggleSnackbar('text')" @click="setNoteType('AddTextNote')" class=" icon fas fa-font font">
+          <snackbar-icon :showSnackbar="showSnackBars['text']" snackbarText="Add a text note"/>
+        </i>
+        <i @mouseout="toggleSnackbar('video')" @mouseover="toggleSnackbar('video')" @click="setNoteType('AddVideoNote')" class=" icon fab fa-youtube youtube">
+          <snackbar-icon :showSnackbar="showSnackBars['video']" snackbarText="Add a youtube video"/>
+        </i>
+        <i @mouseout="toggleSnackbar('image')" @mouseover="toggleSnackbar('image')"  @click="setNoteType('AddImgNote')" class=" icon fas  fa-image image-icon">
+          <snackbar-icon :showSnackbar="showSnackBars['image']" snackbarText="add an image note"/>
+        </i>
+        <i @mouseout="toggleSnackbar('list')" @mouseover="toggleSnackbar('list')" @click="setNoteType('AddListNote')" class=" icon fas fa-list list">
+          <snackbar-icon :showSnackbar="showSnackBars['list']" snackbarText="add a list note"/>
+        </i>
+      </div>
     </div>
-    <div  v-if="showAddNote">
-    <add-note-extended @addnote="addNote" :noteType="noteType" />
+    <div v-if="showAddNote">
+      <add-note-extended @close="showAddNote=!showAddNote" @addnote="addNote" :noteType="noteType" />
     </div>
   </div>`,
   data() {
     return {
       showAddNote: false,
       noteType: "AddTextNote",
+      showSnackBars: {
+        video: false,
+        text: false,
+        image: false,
+        list: false,
+      },
     };
   },
   methods: {
     setNoteType(noteType) {
       this.noteType = noteType;
+      this.showAddNote = !this.showAddNote;
+    },
+    toggleSnackbar(type) {
+      this.showSnackBars[type] = !this.showSnackBars[type];
     },
     addNote() {
       this.showAddNote = !this.showAddNote;
@@ -30,5 +52,6 @@ export default {
   components: {
     AddNoteExtended,
     Icon,
+    SnackbarIcon,
   },
 };

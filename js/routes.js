@@ -21,7 +21,7 @@ const myRoutes = [
 
   // EMAIL-APP
   {
-    name:"email",
+    name: "email",
     path: "/email/list/:type?",
     component: emailApp,
   },
@@ -46,7 +46,7 @@ const myRoutes = [
     component: notesApp,
   },
   {
-    path: "/note/:noteId?",
+    path: "/note/createTodo/:title/:content",
     component: addNoteExtended,
   },
 ];

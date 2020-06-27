@@ -1,9 +1,11 @@
 export default {
-  props: ["note", "buttonText"],
-  template: `<div class="flex align-center">
-        <textarea  v-model="content"  placeholder="enter content" />
-        <button @click="addNote">{{buttonText}}</button>
-        </div>`,
+  props: ["note", "buttonText", "urlContent"],
+  template: `
+  <div class="add-text-note-container">
+    <textarea  class="title-input" v-model="content"  placeholder="enter content" />
+    <label class="title-label">Enter Contnet</label>
+    <i @click="addNote" :class="buttonText"></i>
+  </div>`,
   data() {
     return {
       content: "",
@@ -12,6 +14,10 @@ export default {
   created() {
     if (this.note) {
       this.content = this.note.info.content;
+      return;
+    }
+    if (this.urlContent) {
+      this.content = this.urlContent;
     }
   },
   computed: {},

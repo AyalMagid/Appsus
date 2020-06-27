@@ -1,22 +1,35 @@
 export default {
   props: ["note", "buttonText"],
-  template: `<div class="flex align-center">
-  <img height="50px" :src="imgUrl">
-      <input v-model="imgUrl"  placeholder="enter img url" />
-      <button @click="addNote">{{buttonText}}</button>
-      </div>`,
+  template: `
+  <div class="add-img-note-container ">
+    <div>
+      <img  class="add-image-note-image" :src="imgUrl">
+    </div>
+    <label>Enter Image URL</label>
+    <div class="image-note-add-container">
+      <input class="general-input"  v-model="imgUrl"  placeholder="enter img url" />
+      <i @click="addNote" :class="buttonText"></i>
+      </div>
+    </div>
+  </div>`,
   data() {
     return {
+      imageLoaded: false,
       imgUrl:
-        "https://scontent.foko1-1.fna.fbcdn.net/v/t1.0-9/104490397_1497359800435874_3286166808258794385_o.jpg?_nc_cat=111&_nc_sid=730e14&_nc_ohc=tlrSXfdDK6AAX9Ybpgk&_nc_ht=scontent.foko1-1.fna&oh=b440cd359f497443b65aeaf9591046c3&oe=5F197893",
+        "https://scontent.foko1-1.fna.fbcdn.net/v/t1.0-9/69732911_1237501543088369_7210119499972870144_o.jpg?_nc_cat=111&_nc_sid=19026a&_nc_ohc=J5XxJxcMSj8AX9RyL_h&_nc_ht=scontent.foko1-1.fna&oh=673f93861024a5dfb3e2a120ae36c0ce&oe=5F1D230C",
     };
   },
   created() {
     if (this.note) {
       this.imgUrl = this.note.info.url;
+      this.imageLoaded = true;
     }
   },
-  computed: {},
+  computed: {
+    imageLoadedComputed() {
+      return this.imageLoaded;
+    },
+  },
   methods: {
     addNote() {
       const type = "ImgNote";

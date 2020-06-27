@@ -1,18 +1,18 @@
 .notes-container {
   margin: 0 auto;
+  padding: 1rem 4rem;
   column-count: 3;
   column-gap: 10px;
-  row-gap: 20px;
   columns: 300px;
-  min-height: 100vh;
   page-break-inside: avoid;
   break-inside: avoid;
+  overflow: hidden;
 }
 .notes-container > * {
   page-break-inside: avoid;
   break-inside: avoid;
 }
-.notes-container textarea {
-  border: none;
-  outline: none;
+
+.notes-container p {
+  margin: 0;
 }

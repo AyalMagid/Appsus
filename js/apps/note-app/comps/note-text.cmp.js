@@ -4,18 +4,19 @@ import NoteEditing from "./note components/note-editing.cmp.js";
 export default {
   props: ["note"],
   template: `<div
-   class="note-container"
+   class="note-container todo-notes-container"
    :style="note.style"
    @mouseover="showEditingPanel=true"
    @mouseleave="showEditingPanel=false"
+   @click="showEdit = !showEdit"
    >
-  <h1 @click="showEdit = !showEdit">text</h1>
-  <div v-if="showEdit">
-  <add-note-extended @close="showEdit = !showEdit" :note="note" :noteType="'Add'+note.type"/>
+  <div v-if="showEdit" @click.stop>
+   <add-note-extended @close="showEdit = !showEdit" :note="note" :noteType="'Add'+note.type"/>
   </div>
-    <h1>{{note.info.title}}</h1>
-    <p>{{note.info.content}}</p>
-    <note-editing :note="note" />
+  <h3 class="note-title">{{note.info.title}}</h3>
+  <p>{{note.info.content}}</p>
+  <div v-if="showEditingPanel" 
+    @click.stop><note-editing :note="note" /></div>
   </div>`,
   data() {
     return {

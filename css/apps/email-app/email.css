@@ -9,25 +9,25 @@
 /* MAIN */
 
 /* HEADER - the rest in the main file */
-.app-header input, .app-header select {
-    height: 30px;
+.app-header input,
+.app-header select {
+  height: 30px;
 }
 
-.app-header a{
-    color: yellow;
+.app-header a {
+  color: yellow;
 }
 
-.app-header a:hover{
-    color: black;
-
+.app-header a:hover {
+  color: black;
 }
 
 .list-container {
-    flex-grow: 1;
-    margin-left: 70px;
-    margin-right: 70px;
+  flex-grow: 1;
+  margin-left: 70px;
+  margin-right: 70px;
 }
 
-i {
-    font-size: 2rem;
- }
+/* i {
+  font-size: 2rem;
+} */
