@@ -11,11 +11,14 @@ export default {
   <div v-if="showEdit">
     <add-note-extended @close="showEdit = !showEdit" :note="note" :noteType="'Add'+note.type"/>
   </div>
-    <h1 @click="showEdit = !showEdit">image</h1>
-    <img :src="note.info.url"/>
-    <p>{{note.info.title}}</p>
-    <note-editing  :note="note" />
-  </div>`,
+  <img @click.self="showEdit = !showEdit" class="image-note-img" :src="note.info.url"/>
+  <div class="image-note-container">
+    <h3 class="note-title">{{note.info.title}}</h3>
+    <transition name="fade" mode="out-in">
+      <note-editing v-if="showEditingPanel"  :note="note" />
+    </transition>
+    </div>
+    </div>`,
   data() {
     return {
       showEdit: false,

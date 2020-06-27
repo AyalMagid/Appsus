@@ -1,0 +1,22 @@
+.todo-container {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.todo-container li {
+  width: 100%;
+}
+
+.todo {
+  margin: 0.5rem 0px;
+  border: none;
+  border-bottom: 0.2px solid #b2bec3;
+  padding: 0.5rem 0.5rem;
+  outline: none;
+  width: 100%;
+  transition: all 0.3s ease-in-out;
+}
+.todo:focus {
+  border-bottom: 0.2px solid #0876a5;
+}

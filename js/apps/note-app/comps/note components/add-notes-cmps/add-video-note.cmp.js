@@ -1,17 +1,29 @@
 export default {
   props: ["note", "buttonText"],
-  template: `<div class="flex align-center">
-      <iframe v-if="note" :src="note.info.url"></iframe>
-      <input v-model="videoUrl"  placeholder="enter video url" />
-      <button @click="addNote">{{buttonText}}</button>
-      </div>`,
+  template: `
+  <div class="add-video-note-container">
+    <div class="add-video-content-container">
+      <iframe :src="iFrameUrl"></iframe>
+    </div>
+    <label>Enter Video URL</label>
+      <input class="general-input"  v-model="videoUrl"  placeholder="enter video url" />
+      <i @click="addNote" :class="buttonText"></i>
+  </div>`,
   data() {
     return {
-      videoUrl: "https://www.youtube.com/watch?v=1oZCXOahdFo",
+      videoUrl: "https://www.youtube.com/watch?v=syG7ljxqzNg",
     };
   },
   created() {},
-  computed: {},
+  computed: {
+    iFrameUrl() {
+      if (this.note) {
+        return this.note.info.url;
+      } else {
+        return this.videoUrl.replace("watch?v=", "embed/");
+      }
+    },
+  },
   methods: {
     addNote() {
       const videoUrl = this.videoUrl.replace("watch?v=", "embed/");

@@ -9,15 +9,32 @@
 @import "./note-app/header.css";
 @import "./note-app/cmps/add-note-extended.css";
 @import "./note-app/cmps/notes-app-container.css";
+@import "./note-app/cmps/add-note.css";
+@import "./note-app/cmps/add-text-note.css";
+@import "./note-app/cmps/img-note.css";
+@import "./note-app/cmps/note-editing.css";
+@import "./note-app/cmps/video-note.css";
+@import "./note-app/cmps/todoList-note.css";
+@import "./note-app/cmps/add-todo-note.css";
+@import "./note-app/cmps/add-img-note.css";
+@import "./note-app/cmps/add-video-note.css";
+@import "./note-app/animations.css";
+@import "./note-app/cmps/message.css";
 
 /*Email APP CSS*/
 @import "./apps/email-app/email.css";
 
 /* MAIN */
 
+iframe {
+  border: none;
+}
+
 body {
   margin: 0;
-  background-image: url("../img/winner.jpg!d");
+  page-break-inside: avoid;
+  break-inside: avoid;
+  /* background-image: url("../img/winner.jpg!d"); */
   background-repeat: no-repeat;
   background-size: cover;
 }

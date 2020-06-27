@@ -1,0 +1,41 @@
+.note-editing-container {
+  padding: 1rem 0;
+}
+.note-editing-icons-container {
+  display: flex;
+  justify-content: space-between;
+}
+.note-editing-icons-container i {
+  cursor: pointer;
+}
+.color-container {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 0;
+}
+.color-container .color {
+  width: 25px;
+  height: 25px;
+  border-radius: 100%;
+  margin: 0 4px;
+  cursor: pointer;
+  box-shadow: 4px 4px 8px 0 rgba(56, 56, 56, 0.25),
+    -8px -8px 12px 0px rgba(71, 71, 71, 0.06);
+}
+.change-img-btn {
+  position: relative;
+}
+.change-img-btn div {
+  top: 20px;
+}
+
+.new-image-url-container {
+  position: absolute;
+  right: 50px;
+  border-radius: 15px;
+  background-color: white;
+  box-shadow: 4px 4px 8px 0 rgba(56, 56, 56, 0.25),
+    -8px -8px 12px 0px rgba(71, 71, 71, 0.06);
+  padding: 10px 20px;
+  z-index: 2;
+}

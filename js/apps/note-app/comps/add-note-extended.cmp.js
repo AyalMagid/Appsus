@@ -4,19 +4,22 @@ import AddVideoNote from "./note components/add-notes-cmps/add-video-note.cmp.js
 import AddTextNote from "./note components/add-notes-cmps/add-text-note.cmp.js";
 import NoteEditing from "./note components/note-editing.cmp.js";
 import { notesService } from "../services/note-service.js";
+import { eventBus } from "../services/event-bus-service.js";
 export default {
   props: ["noteType", "note"],
   template: `
   <div
-  @click.self="close"
+  @click="close"
   class="flex align-center"
-  :class="overlayClass">
-    <div class="overlay-content"> 
-    <label>Title</label>
-    <input type="text" v-model="title" placeholdwer="what would you like to do?" />
-    <component @addnote="addNote" :note="note" :buttonText="buttonText" :is="noteTypeComputed"/>
+  :class="overlayClass"
+  >
+    <div :style="backgroundColor"  @click.stop class="add-note-extended-container"> 
+      <div class="title-container">
+      <input class="title-input" type="text" v-model="title" placeholder="what would you like to do?" />
+      <label class="title-label">Enter title</label>
+      </div>
+    <component :urlContent="urlContent" @addnote="addNote" :note="note" :buttonText="buttonText" :is="noteTypeComputed"/>
     <note-editing @colorchoosen="setColor"  :note="note" />
-
   </div>
   </div>`,
   data() {
@@ -29,21 +32,41 @@ export default {
   created() {
     if (this.note) {
       this.title = this.note.info.title;
+      this.backgroundColor = this.note.style;
+    }
+    if (this.$route.params) {
+      this.title = this.$route.params.title;
     }
   },
   computed: {
     noteTypeComputed() {
       if (this.noteType) {
         return this.noteType;
+      } else if (this.$route.params) {
+        return "AddTextNote";
       } else {
         return "Add" + this.note.type;
       }
     },
+    urlContent() {
+      if (this.$route.params) return this.$route.params.content;
+      else return null;
+    },
     buttonText() {
-      return this.note ? "Edit" : "Add";
+      return this.note ? "far fa-save" : "fas fa-plus";
     },
     overlayClass() {
-      return this.showOverlay ? "overlay" : "";
+      return {
+        overlay: this.showOverlay,
+      };
+    },
+    backgroundColorClass() {
+      if (this.note) {
+        return this.note.style.backgroundColor;
+      }
+    },
+    objClass() {
+      return {};
     },
   },
   methods: {
@@ -66,6 +89,10 @@ export default {
       }
       notesService.addNote(note);
       this.$emit("addnote");
+      eventBus.$emit("displayMessage", "Note Added");
+      if (this.$route.params.type) {
+        this.$router.push("/note");
+      }
     },
     close() {
       this.showOverlay = false;

@@ -1,38 +1,47 @@
 import { notesService } from "../../services/note-service.js";
-import { utilService } from "../../../../services.js/util-service.js";
 
 export default {
   props: ["note"],
   template: `
-<div class="flex">
-    <div v-if="isEdit">
+<div class="note-editing-container">
+    <div class="note-editing-icons-container" v-if="isEdit">
       <i @click="removeNote" class="fas fa-trash"></i>
-      <i @click="duplicateNote" class="fas fa-copy"></i>
+      <i @click="duplicateNote" class="fas fa-clone"></i>
       <i class="fas fa-thumbtack"></i>
+      <i v-if="isImage" @click.self="showImageUrl=!showImageUrl" class="fas fa-image change-img-btn">
+        <div class="new-image-url-container" v-if="showImageUrl">
+          <input  v-model="newImageUrl" placeholder="enter URL for new Image"></input>
+          <button @click="changeBackgroundImage">add</button>
+        </div>
+      </i>
+      <i @click="showColors = !showColors" class="fas fa-palette"></i>
     </div>
-    <div>    
-    <i @click="showColors = !showColors" class="fas fa-palette"></i>
-    <div v-if="showColors" :key="index" v-for="(color,index) in colors">
-        <div  @click="changeNoteColor(color.backgroundColor)" style="width:25px;height:25px;border-radius:100%; border:1px solid #fff;" :style="color"></div>
-    </div>
+    <div class="color-container" v-if="showColors" :key="index" v-for="(color,index) in colors">
+        <div v-if="note.style.backgroundColor!=color" class="color" @click="changeNoteColor(color.backgroundColor)" :style="color"></div>
     </div>
 </div>`,
   data() {
     return {
       isEdit: false,
       showColors: false,
+      isImage: false,
+      showImageUrl: false,
+      newImageUrl:
+        "https://scontent.foko1-1.fna.fbcdn.net/v/t1.0-9/104490397_1497359800435874_3286166808258794385_o.jpg?_nc_cat=111&_nc_sid=730e14&_nc_ohc=tlrSXfdDK6AAX9Ybpgk&_nc_ht=scontent.foko1-1.fna&oh=b440cd359f497443b65aeaf9591046c3&oe=5F197893",
       colors: [
         { backgroundColor: "#002626" },
         { backgroundColor: "#D02A25" },
         { backgroundColor: "#D9DBF1" },
         { backgroundColor: "#A1C181" },
         { backgroundColor: "#FCCA46" },
+        { backgroundColor: "#fff" },
       ],
     };
   },
   created() {
     if (this.note) {
       this.isEdit = true;
+      if (this.note.type === "ImgNote") this.isImage = true;
     }
   },
   computed: {},
@@ -50,6 +59,10 @@ export default {
     },
     duplicateNote() {
       notesService.duplicateNote(this.note);
+    },
+    changeBackgroundImage() {
+      this.showImageUrl = !this.showImageUrl;
+      notesService.changeBackgroundImage(this.note.id, this.newImageUrl);
     },
   },
 };

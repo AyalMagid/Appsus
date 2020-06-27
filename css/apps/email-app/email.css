@@ -9,20 +9,30 @@
 /* MAIN */
 
 /* HEADER - the rest in the main file */
-.app-header input, .app-header select {
-    height: 30px;
+.app-header input,
+.app-header select {
+  height: 30px;
 }
 
-.app-header a{
-    color: yellow;
+.app-header a {
+  color: yellow;
 }
 
-.app-header a:hover{
-    color: black;
-
+.app-header a:hover {
+  color: black;
 }
 
 .list-container {
+<<<<<<< HEAD
+  flex-grow: 1;
+  margin-left: 70px;
+  margin-right: 70px;
+}
+
+/* i {
+  font-size: 2rem;
+} */
+=======
     flex-grow: 1;
     margin-left: 20px;
     margin-right: 70px;
@@ -31,5 +41,9 @@
 .i-btns {
     font-size: 2rem;
  }
+<<<<<<< HEAD
 
  
+=======
+>>>>>>> 2457d5e3061afcb5d7ff9cafa02af45f8a51e44d
+>>>>>>> ccc60177c6b85afb40f369956c90a4860d4a8a89

@@ -1,0 +1,8 @@
+.note-video {
+  border-radius: 20px 20px 0 0;
+  border: none;
+}
+
+.note-video iframe {
+  width: 100%;
+}
