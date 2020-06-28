@@ -10,7 +10,7 @@ const notes = [
       content: "Trying getting it done by tomorrow!",
     },
     style: {
-      backgroundColor: "trasparent",
+      backgroundColor: "#fff",
       boxShadow: `4px 4px 8px 0 rgba(56, 56, 56, 0.25),
       -8px -8px 12px 0px rgba(71, 71, 71, 0.06)`,
     },
@@ -100,6 +100,9 @@ const addNote = (note) => {
   const doesExist = note.id;
   if (doesExist) {
     const noteIndex = getNoteIndex(note.id);
+    if ((notes[noteIndex].style.backgroundColor = "#fff")) {
+      note.style.boxShadow = `4px 4px 8px 0 rgba(56, 56, 56, 0.25),-8px -8px 12px 0px rgba(71, 71, 71, 0.06)`;
+    }
     notes.splice(noteIndex, 1, note);
     return;
   }

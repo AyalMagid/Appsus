@@ -15,8 +15,11 @@ export default {
   </div>
   <h3 class="note-title">{{note.info.title}}</h3>
   <p>{{note.info.content}}</p>
-  <div v-if="showEditingPanel" 
-    @click.stop><note-editing :note="note" /></div>
+  <div @click.stop>
+    <transition name="fade" mode="out-in">
+     <note-editing v-if="showEditingPanel"  :note="note" />
+    </transition> 
+  </div>
   </div>`,
   data() {
     return {

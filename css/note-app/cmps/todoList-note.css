@@ -1,3 +1,9 @@
 .todo-notes-container {
   padding: 1rem;
 }
+.todo-list-container {
+  margin-bottom: 2rem;
+}
+.todo-list-container > * {
+  cursor: pointer;
+}

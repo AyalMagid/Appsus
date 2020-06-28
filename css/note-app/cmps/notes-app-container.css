@@ -5,8 +5,8 @@
   column-gap: 10px;
   columns: 300px;
   page-break-inside: avoid;
-  min-height: 80vh;
   break-inside: avoid;
+  min-height: 80vh;
   overflow: hidden;
 }
 .notes-container > * {
@@ -15,5 +15,5 @@
 }
 
 .notes-container p {
-  margin: 0;
+  margin-bottom: 35px;
 }

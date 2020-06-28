@@ -29,4 +29,11 @@
 .app-menu i {
   font-size: 25px;
   margin: 0 5px;
+  transition: all 0.3s ease-in-out;
+}
+.app-menu i:hover {
+  font-size: 25px;
+  margin: 0 5px;
+  transform: scale(1.2);
+  color: #e67e22;
 }

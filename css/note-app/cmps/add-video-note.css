@@ -1,5 +1,8 @@
 .add-video-note-container {
 }
+.add-video-content-container {
+  padding: 1rem 0.5rem;
+}
 .add-video-content-container iframe {
   height: 250px;
 }

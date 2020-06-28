@@ -4,7 +4,7 @@ export default {
   props: ["todo", "index", "noteId"],
   template: `<li>
   <i @click="todo.completed = !todo.completed" :class="completedTodo" ></i>
-    <span :class="completedTask" >{{todo.content}}</span>
+    <span @click="todo.completed = !todo.completed" :class="completedTask" >{{todo.content}}</span>
   </li>`,
   data() {
     return {};

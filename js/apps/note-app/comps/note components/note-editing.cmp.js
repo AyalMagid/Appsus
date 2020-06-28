@@ -14,10 +14,15 @@ export default {
           <button @click="changeBackgroundImage">add</button>
         </div>
       </i>
-      <i @click="showColors = !showColors" class="fas fa-palette"></i>
+      <i @click="showColors = !showColors"  class="fas fa-palette color-picker">
+        <div v-if="showColors" class="colors-container">
+          <div class="color-container" :key="index" v-for="(color,index) in colors">
+            <span v-if="note.style.backgroundColor!=color" class="color" @click="changeNoteColor(color.backgroundColor)" :style="color"></span>
+        </div>
+      </div>
+      </i>
     </div>
-    <div class="color-container" v-if="showColors" :key="index" v-for="(color,index) in colors">
-        <div v-if="note.style.backgroundColor!=color" class="color" @click="changeNoteColor(color.backgroundColor)" :style="color"></div>
+ 
     </div>
 </div>`,
   data() {

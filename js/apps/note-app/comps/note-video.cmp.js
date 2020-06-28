@@ -21,8 +21,10 @@ export default {
       <div v-if="videoIsLoading" class="loading-spinner">
        <i class="fas fa-spinner"></i>
       </div>
-      <div v-if="showEditingPanel" @click.stop>
-        <note-editing  :note="note" />
+      <div @click.stop>
+      <transition name="fade" mode="out-in">
+        <note-editing :note="note"  v-if="showEditingPanel" />
+      </transition>
       </div>
   </div>
 </div>`,

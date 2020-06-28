@@ -9,7 +9,7 @@ export default {
   <div>
     <Header :showIcon="true" :title="'Notes'" :iconType="'note'" />
     <AddNote/>
-    <notes-grid :notes="notes" />
+    <notes-grid :notes="notes"/>
     <transition name="fade" mode="out-in">
       <user-message/>
     </transition>

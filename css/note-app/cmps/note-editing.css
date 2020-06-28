@@ -1,26 +1,47 @@
 .note-editing-container {
-  padding: 1rem 0;
+  bottom: 16px;
+  width: 90%;
+  position: absolute;
 }
 .note-editing-icons-container {
   display: flex;
   justify-content: space-between;
+  position: relative;
 }
 .note-editing-icons-container i {
   cursor: pointer;
 }
+.color-picker {
+  position: relative;
+}
+.colors-container {
+  width: 120px;
+  padding: 10px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  z-index: 3;
+}
 .color-container {
   display: flex;
-  flex-direction: column;
-  padding: 0.5rem 0;
+  padding: 0.2rem 0;
+  width: 50%;
+  justify-content: center;
 }
 .color-container .color {
+  width: 33%;
   width: 25px;
   height: 25px;
   border-radius: 100%;
   margin: 0 4px;
   cursor: pointer;
-  box-shadow: 4px 4px 8px 0 rgba(56, 56, 56, 0.25),
-    -8px -8px 12px 0px rgba(71, 71, 71, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.7);
 }
 .change-img-btn {
   position: relative;

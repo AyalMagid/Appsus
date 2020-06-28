@@ -20,7 +20,7 @@
   box-shadow: 4px 4px 8px 0 rgba(56, 56, 56, 0.25),
     -8px -8px 12px 0px rgba(71, 71, 71, 0.06);
 }
-.title-container {
+.add-note-extended-title-container {
   display: flex;
   align-items: center;
   padding: 0.5rem 0;
@@ -39,7 +39,7 @@
   font-size: 14px;
   color: #333;
 }
-.title-input ::placeholder {
+.title-input::placeholder {
   color: #000;
 }
 .title-input {
@@ -48,7 +48,7 @@
   padding: 15px 10px 10px 10px;
   color: #333;
   border: none;
-  border-bottom: 1px solid #b2bec3;
+  border-bottom: 1px solid #333;
   transition: all 0.3s ease-in-out;
   background-color: transparent;
 }

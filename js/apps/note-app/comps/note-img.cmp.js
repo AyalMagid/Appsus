@@ -22,7 +22,7 @@ export default {
   data() {
     return {
       showEdit: false,
-      showEditingPanel: false,
+      showEditingPanel: true,
     };
   },
   created() {

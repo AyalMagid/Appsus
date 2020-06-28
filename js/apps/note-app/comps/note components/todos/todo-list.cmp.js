@@ -3,7 +3,7 @@ import Todo from "./todo.cmp.js";
 export default {
   props: ["todos", "noteId"],
   template: `<div>
-      <ul class="clean-list">
+      <ul class="clean-list todo-list-container">
         <todo :noteId="noteId" :key="index" :todo="todo" v-for="(todo,index) in todos"/>
       </ul>
     </div>`,

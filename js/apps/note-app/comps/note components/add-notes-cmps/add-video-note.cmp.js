@@ -5,8 +5,10 @@ export default {
     <div class="add-video-content-container">
       <iframe :src="iFrameUrl"></iframe>
     </div>
-    <label>Enter Video URL</label>
-      <input class="general-input"  v-model="videoUrl"  placeholder="enter video url" />
+    <div style="position:relative">
+    <input class="title-input"  v-model="videoUrl"  placeholder="enter video url" />
+    <label class="title-label">Enter Video URL</label>
+    </div>
       <i @click="addNote" :class="buttonText"></i>
   </div>`,
   data() {

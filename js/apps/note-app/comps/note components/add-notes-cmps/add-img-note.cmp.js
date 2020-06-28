@@ -5,9 +5,9 @@ export default {
     <div>
       <img  class="add-image-note-image" :src="imgUrl">
     </div>
-    <label>Enter Image URL</label>
     <div class="image-note-add-container">
-      <input class="general-input"  v-model="imgUrl"  placeholder="enter img url" />
+    <input class="title-input"  v-model="imgUrl"  placeholder="enter img url" />
+      <label class="title-label">Enter Image URL</label>
       <i @click="addNote" :class="buttonText"></i>
       </div>
     </div>
