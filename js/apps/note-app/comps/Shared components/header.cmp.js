@@ -12,6 +12,7 @@ export default {
         <div v-if="showDropDown" class="app-menu">
      
         <router-link class="far fa-envelope" tag="i" to="/email/list/isInbox"></router-link>
+        <router-link v-if="$route.path!='/'" class="fas fa-home"" tag="i" to="/"></router-link>
         <router-link v-if="$route.path!='/note'" class="far fa-sticky-note" tag="i" to="/note"></router-link>
         </div>
       </div>
