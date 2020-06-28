@@ -50,7 +50,7 @@
   cursor: pointer;
 }
 .add-note-container input::placeholder {
-  color: #333;
+  color: #000;
 }
 
 .add-note-container span {

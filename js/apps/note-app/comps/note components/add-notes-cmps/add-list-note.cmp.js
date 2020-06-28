@@ -1,4 +1,5 @@
 import TodoList from "../todos/todo-list.cmp.js";
+import { eventBus } from "../../../services/event-bus-service.js";
 
 export default {
   props: ["note", "buttonText"],
@@ -6,7 +7,7 @@ export default {
   <div class="">
     <ul class="clean-list todo-container">
       <li :key="index" v-for="(item,index) in items">
-      <input class="todo" v-model="items[index].content" @keyup.delete='removeItem(index)' placeholder="Enter list item" @input="addItem(index)" />
+      <input class="general-input" v-model="items[index].content" @keyup.delete='removeItem(index)' placeholder="Enter list item" @input="addItem(index)" />
       </li>
     </ul>
     <i @click="addNote" :class="buttonText"></i>
@@ -23,7 +24,14 @@ export default {
       this.items = this.note.info.todos;
     }
   },
-  computed: {},
+  computed: {
+    itemsLength() {
+      return this.items.length - 1;
+    },
+    lastItemStatus() {
+      return !!this.items[this.itemsLength].content != "";
+    },
+  },
   methods: {
     addItem(index) {
       if (!this.items[index].wasPressed || index === this.items.length - 1) {
@@ -41,16 +49,15 @@ export default {
     },
     addNote() {
       const type = "ListNote";
+      const itemsLength = this.items.length;
       let note = { type, todos: this.items };
       if (!this.note) {
         this.items.pop();
-      } else if (
-        //this checks if the last item in the todos array doens't have content
-        !this.note.info.todos[this.note.info.todos.length - 1].content
-      ) {
-        this.items.pop();
+      } else {
         note.id = this.note.id;
+        if (!this.items[itemsLength - 1].content) this.items.pop();
       }
+
       this.$emit("addnote", note);
     },
   },

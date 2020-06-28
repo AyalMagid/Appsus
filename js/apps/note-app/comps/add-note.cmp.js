@@ -46,9 +46,11 @@ export default {
       this.showSnackBars[type] = !this.showSnackBars[type];
     },
     addNote() {
+      console.log("here");
       this.showAddNote = !this.showAddNote;
     },
   },
+
   components: {
     AddNoteExtended,
     Icon,

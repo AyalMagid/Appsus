@@ -2,7 +2,7 @@ import { eventBus } from "../../note-app/services/event-bus-service.js";
 
 export default {
   template: `
-    <div :class="messageClass" v-if="message" class='message-container'>{{message}}</div>
+    <div :class="messageClass" v-if="message" class='message-container'>{{message.content}}</div>
     `,
   data() {
     return {

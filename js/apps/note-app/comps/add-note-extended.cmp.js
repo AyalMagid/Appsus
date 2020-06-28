@@ -12,14 +12,14 @@ export default {
   @click="close"
   class="flex align-center"
   :class="overlayClass"
+  v-if="showComponent"
   >
     <div :style="backgroundColor"  @click.stop class="add-note-extended-container"> 
-      <div class="title-container">
-      <input class="title-input" type="text" v-model="title" placeholder="what would you like to do?" />
+      <div class="add-note-extended-title-container">
+      <input class="title-input" type="text" v-model="title" placeholder="Type note title" />
       <label class="title-label">Enter title</label>
-      </div>
+    </div>
     <component :urlContent="urlContent" @addnote="addNote" :note="note" :buttonText="buttonText" :is="noteTypeComputed"/>
-    <note-editing v-if="note" @colorchoosen="setColor"  :note="note" />
   </div>
   </div>`,
   data() {
@@ -27,6 +27,7 @@ export default {
       title: "",
       showOverlay: true,
       backgroundColor: "yellow",
+      showComponent: true,
     };
   },
   created() {
@@ -34,7 +35,7 @@ export default {
       this.title = this.note.info.title;
       this.backgroundColor = this.note.style;
     }
-    if (this.$route.params) {
+    if (this.$route.params.title) {
       this.title = this.$route.params.title;
     }
   },
@@ -82,6 +83,14 @@ export default {
       } else if (payload.todos) {
         note.info = { title: this.title, todos: payload.todos };
       } else {
+        if (!this.title && !payload.content) {
+          eventBus.$emit("displayMessage", {
+            content: "A text note must have either a title or content",
+            failure: true,
+          });
+          this.showComponent = false;
+          return;
+        }
         note.info = { title: this.title, content: payload.content };
       }
       if (payload.id) {
@@ -89,10 +98,11 @@ export default {
       }
       notesService.addNote(note);
       this.$emit("addnote");
-      // eventBus.$emit("displayMessage", "Note Added");
+      eventBus.$emit("displayMessage", { content: "Note Added" });
       if (this.$route.params.title) {
         this.$router.push("/note");
       }
+      this.showComponent = false;
     },
     close() {
       this.showOverlay = false;

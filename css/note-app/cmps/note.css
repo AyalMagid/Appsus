@@ -1,11 +1,12 @@
 .note-container {
   background-color: #fed766;
-  border-radius: 20px;
+  border-radius: 10px;
   margin: 10px;
   position: relative;
   background: #ffffff;
   transition: all 2 ease-in-out;
-
+  page-break-inside: avoid;
+  break-inside: avoid;
   /* border: 3px solid rgba(145, 145, 145, 0.2); */
 }
 
@@ -15,7 +16,7 @@
   object-fit: cover;
 }
 .image-note-img {
-  border-radius: 20px 20px 0 0;
+  border-radius: 10px 10px 0 0;
 }
 iframe {
   width: 100%;
@@ -66,5 +67,4 @@ iframe {
 }
 .note-title {
   margin-top: 0;
-  margin-bottom: 1rem;
 }

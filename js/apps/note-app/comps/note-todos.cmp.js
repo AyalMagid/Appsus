@@ -17,11 +17,13 @@ class="note-container todo-notes-container"
       <add-note-extended @close="showEdit = !showEdit" :note="note" :noteType="'Add'+note.type"/>
     </div>
     <h3 class="note-title">{{note.info.title}}</h3>
-    <div  @click.stop>
+    <div @click.stop>
       <todo-list :noteId="note.id" :todos="note.info.todos"/>
     </div>
-    <div v-if="showEditingPanel" @click.stop>
-      <note-editing :note="note" />
+    <div @click.stop>
+    <transition name="fade" mode="out-in">
+      <note-editing :note="note"  v-if="showEditingPanel" />
+    </transition>
     </div>
 </div>`,
   data() {
