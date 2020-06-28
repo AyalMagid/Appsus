@@ -12,6 +12,10 @@
     width: 70%;
 }
 
+.compose-header-container {
+    min-height: 60px;
+}
+
 .compose-container h3{
     margin-top: 0;
     margin-bottom: 0;
