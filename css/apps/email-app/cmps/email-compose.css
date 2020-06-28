@@ -4,13 +4,17 @@
     color: black;
     background-color:white;
     border-radius: 20px;
-
     position: fixed;
     z-index: 2;
-    bottom: 10px;
+    bottom: 0;
     right: 0;
     height: 70%;
     width: 70%;
+    border: solid black 2px;
+}
+
+.compose-header-container {
+    min-height: 60px;
 }
 
 .compose-container h3{
@@ -19,10 +23,14 @@
     padding-left:20px;
     padding-top: 20px;
     padding-bottom: 20px;
-    background-color: #064e06;
-    color: white;
+    background-color: #fff9eb;
+    color: black;
     flex-grow: 1;
     border-radius: 20px 0 0 0 ;
+}
+
+.cls-compose{
+    border-radius: 0 20px 0 0;
 }
 
 .email-body textarea {
@@ -33,57 +41,56 @@
 
 .btns-container {
     width:100%;
+    background-color:  #fff9eb;
+    color: white;
     border-radius: 0 0 0 20px;
     height: 50px;
-    margin-top: 0;
-    margin-bottom: 0;
     position: fixed;
     bottom: 0;
 }
 
-.btns-container{
-    background-color:  #064e06;
-    color: white;
-}
-
-button .submit-button{
-    padding-top: 8px;
-    padding-left: 15px;
-}
-
-.cls-btn{
-    padding-right: 10px;
-    padding-top: 5px;
+.fa-window-close:before {
+    margin-right: 10px;
+    font-size: 0.7em;
+    
 }
 
 .send-btn {
-    margin-left: 5px;
-    color:black;
+    padding-left: 15px;
 }
 
+.pressed {
+    background-color: white;;
+    margin-left: 10px;
+    border-radius: 20px;
+    border: none;
+    transition: 0.8s;
+}
 
 .email-compose button:not(.pressed){
     border: none;
-    border-radius: 0 20px 0 0;
-    background-color:  #064e06;
-    color: white;
+    background-color:  #fff9eb;
+    color: black;
+    border: 0;
+    
 } 
 
-
-.pressed {
-    background-color: white;
-
+.btns-container button:last-child:hover{
+    border: solid black 1px;
+    color:black;
+    
 }
+
 
 .compose-container input {
     height: 30px;
     border: none;
     border-bottom: solid gray 2px;
 }
+
 .email-to{
     flex-grow:1; 
 }
-
 
 .fa-trash:before ,.fa-paper-plane:before, .fa-reply:before   {
     font-size: 1.2rem;

@@ -1,3 +1,4 @@
+import { emailService } from "../services/email-service.js";
 
 export default {
     props: ['email','listType'],
@@ -12,6 +13,7 @@ export default {
                     <p class="email-name">{{email.name}}</p>
                     <p class="email-subject">{{email.subject}}</p>
                     <p>{{sentAt}}</p>
+                    <button @click.prevent="removeEmail" class="remove-btn"><i   class="fa fa-trash " aria-hidden="true"></i></button>
                 </template>
              </li>
         </router-link>
@@ -33,7 +35,14 @@ export default {
         methods : {
             toggleStarred (){
                 this.email.isStarred = !this.email.isStarred
-            }
+            },
+            removeEmail() {
+                emailService.removeEmail(this.email.id, this.listType);
+                // this.$router.push({ name: "email", params: { type: this.listType } });
+              }
+        },
+        components: {
+            emailService
         }
 }
 

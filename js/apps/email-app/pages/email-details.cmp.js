@@ -9,26 +9,25 @@ export default {
   template: `
         <section v-if="email" class="email-details"  @click.stop="closeSideBar">
         <email-header></email-header>
-            <!-- <router-link to="/email"><button class="close-email-btn">Back to Email list</button></router-link> -->
-         <!-- <div class="main-wrapper flex space-between"> -->
-            <div @click.stop="openSideBar" class="flex flex-col side-container" :class="{move: isMovedClass}">
-                 <!-- needs to send emails props but get it first so it can show the numbers-->
+            <button @click.stop="openSideBar" v-if="!isMoved" class="hamburger"><i class="fa fa-bars" ></i></button>
+            <div class="flex flex-col side-container" :class="{move: isMovedClass}">
                 <email-status ></email-status> 
                 <side-nav @compose="changeComposeMode"/>
             </div>
             <div class="flex flex-col details-container">
                 <div class="title-container">
                      <h2>{{email.subject}}</h2>
-                     <div class="flex space-between address">
-                         <h5>{{email.name}}{{email.address}}</h5>
-                     </div >
+                      <div>
+                         <h5 >{{email.name}} : </h5>
+                         <h5> {{email.address}} </h5>
+                      </div>
                 </div>
                 <div class="mail-body">
                     <p>{{email.body}}</p>
                 </div>   
                 <div >
-                    <button  @click="setReplayMode(true)" class="reply-btn"><i class="fa fa-reply i-btns" aria-hidden="true"></i></button>
-                    <button @click="removeEmail"><i class="fa fa-trash i-btns" aria-hidden="true"></i></button>
+                    <button  @click="setReplayMode(true)" class="reply-btn"><i class="fa fa-reply " aria-hidden="true"></i></button>
+                    <button @click="removeEmail"  class="remove-btn"><i class="fa fa-trash " aria-hidden="true"></i></button>
                 </div>
             </div>
          <!-- </div> -->

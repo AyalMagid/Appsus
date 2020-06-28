@@ -13,8 +13,8 @@ export default {
             <user-msg></user-msg>
             <email-header></email-header>
             <email-filter @sort="sortList" @filter="setFilter" ></email-filter>
-
-                <div @click.stop="openSideBar" class="flex flex-col side-container" :class="{move: isMovedClass}">
+                <button @click.stop="openSideBar" v-if="!isMoved" class="hamburger"><i class="fa fa-bars" ></i></button>
+                <div class="flex flex-col side-container" :class="{move: isMovedClass}">
                     <email-status ></email-status>
                     <side-nav @compose="changeComposeMode" />
                 </div>
