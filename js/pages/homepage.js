@@ -25,7 +25,7 @@ export default {
     <div class="app-wrapper">
     <div class="note-app-intro-container">
     <div class="img-container">
-    <img src="/img/mail.jpg"></img>
+    <img src="img/mail.jpg"></img>
   </div>
     <div class="app-introduction">
       <h3>Your new email solution</h3>
