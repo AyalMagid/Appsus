@@ -9,8 +9,12 @@
 
 /* MAIN */
 
-.email-app{
+.email-app, .email-details{
     height: 100%;
+}
+
+ .email-app, .email-details{
+    background-color: #40654ab8;;
 }
 
 

@@ -62,11 +62,17 @@ button .submit-button{
 }
 
 
-.email-compose button{
+.email-compose button:not(.pressed){
     border: none;
     border-radius: 0 20px 0 0;
     background-color:  #064e06;
     color: white;
+} 
+
+
+.pressed {
+    background-color: white;
+
 }
 
 .compose-container input {
@@ -82,4 +88,6 @@ button .submit-button{
 .fa-trash:before ,.fa-paper-plane:before, .fa-reply:before   {
     font-size: 1.2rem;
 }
+
+
 
