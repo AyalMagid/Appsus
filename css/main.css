@@ -34,9 +34,7 @@ body {
   margin: 0;
   page-break-inside: avoid;
   break-inside: avoid;
-  /* background-image: url("../img/winner.jpg!d"); */
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-color: #40654ab8;;
 }
 
 html {
@@ -72,4 +70,8 @@ a {
 
 .app-header .logo {
   margin-right: 40px;
+}
+
+.main-container{
+  height: 100vh;
 }

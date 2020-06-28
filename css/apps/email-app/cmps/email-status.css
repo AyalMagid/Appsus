@@ -1,5 +1,13 @@
 
 .email-status{
-    background-color: yellow;
-    border-radius: 0 40px;
+    background-color: #ffe065;
+    border-radius: 0 40px 0 0;
+    border-bottom: solid white 2px;
+}
+.email-status .txt{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.numbers-status {
+    padding-bottom: 20px;
 }

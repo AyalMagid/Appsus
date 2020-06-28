@@ -1,23 +1,19 @@
 .user-msg {
-    border:  solid white 2px;
-    background-color:rgb(215, 228, 105);
-    border-radius: 0 0 0 100% ;
     position: fixed;
-    top: 0;
-    right: 0;
-    height: 200px;
-    width: 400px;
-    color: black;
-    z-index: 3;
-    max-width: 25%;
-    padding-left: 5px;
-    padding-right: 5px;
+  padding: 20px;
+  bottom: 20px;
+  border-radius: 15px;
+  right: 40%;
+  min-width: 20%;
+  background-color: white;
+  color: black;
+  border: solid black 2px;
 }
 
 .user-msg p {
     text-align: center;
-    color: rgb(100, 112, 124);
-    margin-top: 50px;
+    color: black;
+
     font-size: 1.2rem;
 }
 
@@ -25,3 +21,16 @@
     float:right;
 }
 
+.cls-btn {
+    font-size: 1.2rem;
+}
+
+
+
+/* ONLY MOBILE */
+
+@media (max-width: 860px) {
+    .user-msg {
+        right: 35%;
+    }
+}

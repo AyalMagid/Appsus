@@ -13,9 +13,7 @@ new Vue({
             <main class="main-container">
                  <router-view />
             </main>
-            <footer>
-                @ 2020
-            </footer>
+    
         </div>
     `,
        components: {

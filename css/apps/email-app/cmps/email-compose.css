@@ -1,12 +1,10 @@
 
 .compose-container{
-    border: solid white 1px;
     /* background-color: rgb(54, 54, 54); */
-    opacity: 0.95;
     color: black;
     background-color:white;
     border-radius: 20px;
-    box-shadow: 0px 2px 15px 7px #000000;
+
     position: fixed;
     z-index: 2;
     bottom: 10px;
@@ -21,19 +19,13 @@
     padding-left:20px;
     padding-top: 20px;
     padding-bottom: 20px;
-    background-color:rgb(219, 231, 105);
-    border-bottom: solid white 2px;
+    background-color: #064e06;
+    color: white;
     flex-grow: 1;
     border-radius: 20px 0 0 0 ;
-    box-shadow: 0px 2px 15px 7px rgb(184, 184, 184);
 }
 
-.compose {
-    color: yellow;
-    background-color: #030a03;
-}
-
-textarea {
+.email-body textarea {
     width:100%;
     height: 420px;
     border: none;
@@ -50,7 +42,8 @@ textarea {
 }
 
 .btns-container{
-    background-color: rgb(219, 231, 105);;
+    background-color:  #064e06;
+    color: white;
 }
 
 button .submit-button{
@@ -72,7 +65,8 @@ button .submit-button{
 .email-compose button{
     border: none;
     border-radius: 0 20px 0 0;
-    background-color: rgb(219, 231, 105);;
+    background-color:  #064e06;
+    color: white;
 }
 
 .compose-container input {
@@ -83,3 +77,9 @@ button .submit-button{
 .email-to{
     flex-grow:1; 
 }
+
+
+.fa-trash:before ,.fa-paper-plane:before, .fa-reply:before   {
+    font-size: 1.2rem;
+}
+

@@ -1,33 +1,41 @@
-
+import { emailService } from "../services/email-service.js";
 
 export default {
-    props: ['emails'],
     template: `
         <section class="email-status">
-          <h3>unread emails: {{unredCount}}</h3>
-          <div class="prec-status">
-              {{unredByPrec}}
+          <h3 class="txt">unread emails  </h3>
+          <div class="numbers-status">
+          {{unredCount}} | {{unredByPrec}}
           </div>
         </section>
     `,
     data() {
         return {
-
+            emails : null,
+            inbox: null
         }
     },
     computed: {
 
         unredCount(){
             if (!this.emails) return
-            return this.emails.filter(email => !email.isRead).length
+            this.inbox = this.emails.filter(email => (email.isInbox))
+            let unReadEmailsCount = this.inbox.filter(email => (!email.isRead)).length
+            if (unReadEmailsCount) {return unReadEmailsCount}
+            else return 0
         },
         unredByPrec(){
             if (!this.emails) return
-            return Math.floor((this.unredCount/this.emails.length)*100)+'%'
+            return Math.floor((this.unredCount/this.inbox.length)*100)+'%'
         }
-    }
-
+    },
+    created () {
+        emailService.getEmails().then((emails) => {
+            this.emails = emails;
+           
+          });
+    },
+    components: {
+        emailService
+      }
 }
-
-
-

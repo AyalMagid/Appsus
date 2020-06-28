@@ -3,25 +3,15 @@ import sideNav from "../cmps/side-nav.cmp.js";
 import emailCompose from "../cmps/email-compose.cmp.js";
 import userMsg from "../cmps/user-msg.cmp.js";
 import emailStatus from "../cmps/email-status.cmp.js";
-
+import emailHeader from "../cmps/email-header.cmp.js";
 
 export default {
   template: `
-        <section v-if="email" class="email-details">
-        <header class="app-header flex align-center space-between">
-                <user-msg></user-msg>
-                <h1>Appsus</h1>
-                <nav>
-                    <router-link to="/">Home</router-link> |
-                    <router-link to="/email/list/isInbox">MisterEmail</router-link> | 
-                    <router-link to="/note">Miss Notes</router-link> | 
-                    <!-- <router-link to="/book">Miss Books</router-link> |  -->
-                    <router-link to="/about">About</router-link> | 
-                </nav>
-            </header>
+        <section v-if="email" class="email-details"  @click.stop="closeSideBar">
+        <email-header></email-header>
             <!-- <router-link to="/email"><button class="close-email-btn">Back to Email list</button></router-link> -->
-         <div class="main-wrapper flex space-between">
-            <div class="flex flex-col side-container">
+         <!-- <div class="main-wrapper flex space-between"> -->
+            <div @click.stop="openSideBar" class="flex flex-col side-container" :class="{move: isMovedClass}">
                  <!-- needs to send emails props but get it first so it can show the numbers-->
                 <email-status ></email-status> 
                 <side-nav @compose="changeComposeMode"/>
@@ -41,7 +31,7 @@ export default {
                     <button @click="removeEmail"><i class="fa fa-trash i-btns" aria-hidden="true"></i></button>
                 </div>
             </div>
-         </div>
+         <!-- </div> -->
             <email-compose :isReply="isReply" :emailToEdit="email"  v-if="isComposeMode" @clsCompose="closeCompose"/>
         </section>
         `,
@@ -50,7 +40,8 @@ export default {
       email: null,
       isComposeMode: false,
       isReply: false,
-      listType: null
+      listType: null,
+      isMoved:false
     };
   },
   methods: {
@@ -68,24 +59,34 @@ export default {
     },
     removeEmail() {
       emailService.removeEmail(this.email.id, this.listType);
-      this.$router.push({name:'email',params:{type:this.listType}} );
+      this.$router.push({ name: "email", params: { type: this.listType } });
+    },
+    openSideBar() {
+      this.isMoved = true;
+    },
+    closeSideBar() {
+      this.isMoved = false;
+    }
+  },
+    computed : {
+      isMovedClass (){
+        return this.isMoved
     }
   },
   created() {
-      const { emailId, type } = this.$route.params;
-      this.listType = type
+    const { emailId, type } = this.$route.params;
+    this.listType = type;
     emailService.getById(emailId).then((email) => {
-        console.log(email)
       this.email = email;
       this.email.isRead = true;
     });
-    
   },
   components: {
     emailService,
     sideNav,
     emailCompose,
     emailStatus,
-    userMsg
+    userMsg,
+    emailHeader,
   },
 };

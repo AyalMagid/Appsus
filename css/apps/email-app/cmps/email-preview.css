@@ -9,34 +9,36 @@
 .email-preview {
   flex-grow: 1;
   border: solid white 1px;
-  background-color: rgb(80, 80, 80);
-  opacity: 0.7;
-  color: white;
-  /* box-shadow: 0px 2px 6px 5px #000000; */
-  /* box-shadow: 0px 0px 1px 1px #000000; */
+  background-color: #ffe065;
+  color: black;
   padding-left: 15px;
+}
+
+.email-preview>*{
+  width:25%;
 }
 
 .email-preview:hover {
   opacity: 1;
-  background-color: rgb(163, 163, 163);
-  color: yellow;
+  background-color:white;
+
 }
 
 .star {
     visibility:hidden;
-    font-size:25px;
+    font-size:20px;
     cursor:pointer;
 }
 .star:before {
-   content: "\2605";
-   color: white;
-   margin-top: 5px;
+    content: "\2606";
+  
+   color: #40654ab8;
+   margin-top: -9px;
    position: absolute;
    visibility:visible;
 }
 .star:checked:before {
-   content: "\2606";
+    content: "\2605";
    /* position: absolute; */
 }
 
@@ -49,7 +51,28 @@
 
 .checkbox{
     margin-left:50px;
+    width: 15px;
+    height: 15px;
 }
 .checkboxes {
     margin-right:40px;
+    align-self: center;
+}
+
+
+
+/* ONLY MOBILE */
+
+@media (max-width: 860px) {
+  
+.star:before {
+
+ margin-top: 13px;
+
+}
+
+.checkboxes {
+  margin-bottom: 30px;
+} 
+         
 }

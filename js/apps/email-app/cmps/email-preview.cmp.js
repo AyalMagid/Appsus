@@ -7,10 +7,13 @@ export default {
                 <div class="checkboxes">
                     <input @click.stop="toggleStarred" class="star" type="checkbox" title="bookmark starred Emails">
                     <input @click.stop type="checkbox" class="checkbox" v-model="email.isRead" title="Mark as Read/Unread">
+
                 </div>
-                    <p>{{email.name}}</p>
-                    <p>{{email.subject}}</p>
+                <template class="flex space-between">
+                    <p class="email-name">{{email.name}}</p>
+                    <p class="email-subject">{{email.subject}}</p>
                     <p>{{sentAt}}</p>
+                </template>
              </li>
         </router-link>
         `,
@@ -24,7 +27,7 @@ export default {
             
             // convert the mil sec to readbale time or date
             sentAt () {
-                let date = new Date(this.email.sentAt).toString()
+                let date = new Date(this.email.sentAt).toLocaleString() 
                 return date
             }
         },
@@ -34,3 +37,7 @@ export default {
             }
         }
 }
+
+  
+ 
+ 

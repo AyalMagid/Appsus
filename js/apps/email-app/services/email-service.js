@@ -18,7 +18,7 @@ let gEmails = [
     address: "<ayal123@gEmails.com>",
     name: "Moshe",
     subject: "Wassap?",
-    body: "Pick up! haver sheli mahhhherrrrrrrrrr",
+    body: "Hello dear friend............",
     isRead: false,
     sentAt: 1551133930594,
     id: utilService.makeId(),
@@ -31,7 +31,7 @@ let gEmails = [
     address: "<ayal123@gEmails.com>",
     name: "Lior",
     subject: "Why?",
-    body: "Pick up!",
+    body: "why not???????????????",
     isRead: true,
     sentAt: 1421133930594,
     id: utilService.makeId(),
@@ -44,7 +44,7 @@ let gEmails = [
     address: "<ayal123@gEmails.com>",
     name: "Gil",
     subject: "Hey?",
-    body: "Pick up!",
+    body: "Pick up! fasssssssssttttttttttttt",
     isRead: false,
     sentAt: 1311133930594,
     id: utilService.makeId(),
@@ -56,9 +56,9 @@ let gEmails = [
 ];
 
 function getEmails() {
-  if (utilService.loadFromStorage(KEY)) {
-    gEmails = utilService.loadFromStorage(KEY);
-  }
+  // if (utilService.loadFromStorage(KEY)) {
+    // gEmails = utilService.loadFromStorage(KEY);
+  // }
   return Promise.resolve(gEmails);
 }
 
@@ -86,7 +86,9 @@ function sortByDate() {
   });
 }
 
-function createEmail(txt, subject) {
+
+function createEmail(txt, subject, draftVal, sentVal, inboxVal) {
+    console.log(draftVal)
   return {
     address: "<ayal123@gEmails.com>",
     name: "Ayal",
@@ -95,17 +97,18 @@ function createEmail(txt, subject) {
     isRead: false,
     sentAt: Date.now(),
     id: utilService.makeId(),
-    isInbox: false,
+    isInbox: inboxVal,
     isStarred: false,
-    isSent: true,
-    isDraft: false,
+    isSent: sentVal,
+    isDraft: draftVal,
   };
 }
 
 function addEmail(email) {
-  (email.isInbox = true), gEmails.unshift(email);
+  gEmails.unshift(email);
   utilService.saveToStorage(KEY, gEmails);
 }
+
 
 function addToOtherType(listType) {
   gEmails[listType] = true;

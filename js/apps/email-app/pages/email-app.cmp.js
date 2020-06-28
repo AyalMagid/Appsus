@@ -5,31 +5,23 @@ import emailFilter from "../cmps/email-filter.cmp.js";
 import sideNav from "../cmps/side-nav.cmp.js";
 import userMsg from "../cmps/user-msg.cmp.js";
 import emailStatus from "../cmps/email-status.cmp.js";
+import emailHeader from "../cmps/email-header.cmp.js";
 
 export default {
   template: `
-        <main class="email-app" >
-        <header class="app-header flex align-center space-between">
-                <h1 class="logo">Appsus</h1>
-                <user-msg></user-msg>
-                <email-filter @sort="sortList" @filter="setFilter" ></email-filter>
-                <nav>
-                    <router-link to="/">Home</router-link> |
-                    <router-link to="/email/list/isInbox">MisterEmail</router-link> | 
-                    <router-link to="/note">Miss Notes</router-link> | 
-                    <!-- <router-link to="/book">Miss Books</router-link> |  -->
-                    <router-link to="/about">About</router-link> | 
-                </nav>
-            </header>
-            <div class="main-container flex space-between">
-                <div class="flex flex-col side-container">
-                    <email-status :emails="emails"></email-status>
+        <main @click.stop="closeSideBar" class="email-app">
+            <user-msg></user-msg>
+            <email-header></email-header>
+            <email-filter @sort="sortList" @filter="setFilter" ></email-filter>
+
+                <div @click.stop="openSideBar" class="flex flex-col side-container" :class="{move: isMovedClass}">
+                    <email-status ></email-status>
                     <side-nav @compose="changeComposeMode" />
                 </div>
                 <div class="list-container">
                     <email-list :emails="emailsToShow" :listType="listType"></email-list>
                 </div>
-            </div>
+  
             <email-compose  v-if="isComposeMode" @clsCompose="changeComposeMode" :isReply="false"/>
         </main>
     `,
@@ -39,6 +31,7 @@ export default {
       filterBy: null,
       isComposeMode: false,
       listType: null,
+      isMoved: false
     };
   },
   methods: {
@@ -55,6 +48,12 @@ export default {
     },
     changeComposeMode(val) {
       this.isComposeMode = val;
+    },
+    openSideBar (){
+        this.isMoved = true;
+    },
+    closeSideBar (){
+        this.isMoved = false;
     }
   },
   computed: {
@@ -76,8 +75,12 @@ export default {
       }
       return filteredEmails;
     },
+    isMovedClass (){
+        return this.isMoved
+    }
   },
   created() {
+    console.log('create?')
     const { type } = this.$route.params;
     this.listType = type;
     emailService.getEmails().then((emails) => {
@@ -97,6 +100,7 @@ export default {
     emailCompose,
     sideNav,
     emailStatus,
-    userMsg
+    userMsg,
+    emailHeader
   },
 };

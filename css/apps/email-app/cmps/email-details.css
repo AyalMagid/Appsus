@@ -1,41 +1,78 @@
-.details-container{
-    flex-grow: 1;
-    margin-left: 70px;
-    margin-right: 70px;
-    border: solid white 1px;
-    background-color: rgb(54, 54, 54);
-    opacity: 0.8;
-    color: white;
-    border-radius: 20px;
-    box-shadow: 0px 2px 15px 7px #000000;
+.details-container {
+  flex-grow: 1;
+  width: 70%;
+  margin: 0 auto;
+  margin-left: 20%;
+  margin-right: 5%;
+  margin-top: 60px;
+  border: solid white 1px;
+  background-color: white;
+  opacity: 0.8;
+  color: black;
+  border-radius: 20px;
+  box-shadow: 0px 2px 8px 7px #000000;
+  height: 75vh;
 }
 
-.details-container .title-container h2{
-    background-color: rgb(197, 207, 220);
-    margin-top: 0;
-    margin-bottom: 0;
-    padding-left: 20px;
-    padding-top: 20px;
-    padding-bottom: 10px;
-    border-radius: 20px 20px 0px 0;
-    color: black;
-    border-bottom: solid white 2px;
-    /* box-shadow: 0px 2px 15px 7px #000000; */
+.details-container .title-container h2 {
+  background-color:#ffe066;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 20px;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  border-radius: 20px 0 0px 0;
+  color: black;
+  border: solid black 1px;
+  /* box-shadow: 0px 2px 15px 7px #000000; */
 }
 
-.title-container h5, .details-container .mail-body{
-    padding-left: 20px;
+.title-container {
+  padding: 0;
+  border-radius: 20px 20px 0 0;
+  border: solid white 1px;
 }
 
-/* not working */
-.details-container .title-container .address{
-    border-bottom: solid rgb(197, 207, 220) 1px;
+.title-container h2 {
+  width: 100%;
+  height: 100%;
 }
 
-.mail-body{
-    flex-grow: 2;
+.title-container .address {
+  padding-right: 20px;
+  border-radius: 0px 20px 0 0;
+  background-color: #748f7c;
+  color: white;
+  border: solid black 1px;
 }
 
-.reply-btn{
-    border-radius: 0 0 0 20px;
+
+.title-container h5,
+.details-container .mail-body {
+  padding-left: 20px;
+}
+
+.mail-body {
+  flex-grow: 2;
+}
+
+.reply-btn {
+  border-radius: 0 0 0 20px;
+}
+
+/* BREAK-POINTS */
+@media (max-width: 1124px) {
+  .details-container {
+    margin-left: 20%;
+  }
+}
+
+/* ONLY MOBILE */
+
+@media (max-width: 860px) {
+  .details-container {
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 60px;
+  }
 }

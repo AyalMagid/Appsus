@@ -14,7 +14,7 @@ export default {
                             <input type="text"  v-model="subject" placeholder="Subject"/>
                         </template>
                          <h3 v-else>New Message</h3>
-                        <button @click="emitClsCompose" class="cls-compose"><i class="cls-btn i-btns fa fa-window-close" aria-hidden="true"></i></button>
+                        <button @click="emitClsCompose(true)" class="cls-compose"><i class="cls-btn i-btns fa fa-window-close" aria-hidden="true"></i></button>
                     </div>
                       <template v-if="!isReply">
                         <div class="flex space-between">
@@ -32,7 +32,8 @@ export default {
                         <textarea v-else name="email-body"  v-model="txt" ></textarea>
                         <div class="btns-container" >
                             <button @click.prevent="sendEmail" class="send-btn" :disabled="!isValid" ><i class="i-btns fa fa-paper-plane " aria-hidden="true"></i></button>
-                            <button class="delete-btn" @click.prevent="emitClsCompose"><i class="i-btns fa fa-trash" aria-hidden="true"></i></button>
+                            <button class="delete-btn" @click.prevent="emitClsCompose(false)"><i class="i-btns fa fa-trash" aria-hidden="true"></i></button>
+                            <button @click.prevent="makeNote" class="note-btn">Make a note</button>
                         </div>
                     </div>   
                  </div>
@@ -44,31 +45,42 @@ export default {
       txt: '',
       subject: '',
       isCc: false,
-      isBcc: false 
+      isBcc: false,
+      isNote: false
     };
   },
   computed: {
     isValid() {
       return this.txt ? true : false;
     },
-    // replyStyle (){
-    //     if (this.isReply)
-       
-    // }
+
 
   },
     methods: {
-        emitClsCompose (){
+        emitClsCompose (isDraft){
+            if ((isDraft)&&(this.txt!=='')) {
+                let email = emailService.createEmail(this.txt, this.subject, true, false, false)
+                console.log('draft', email)
+                emailService.addEmail(email)
+            }
             this.$emit('clsCompose', false);
             this.isCc = false,
-            this.isBcc = false 
+            this.isBcc = false ,
+            this.isNote = false
         },
         sendEmail(){
-            let email = emailService.createEmail(this.txt, this.subject)
+            let email = emailService.createEmail(this.txt, this.subject, false, true, true)
             // adding it to inbox as incoming mail and to sent mail also
             emailService.addEmail(email)
-            this.emitClsCompose()
-            eventBus.$emit(EVENT_SHOW_MSG, `${this.subject} was sent!`);
+            console.log('sent', email)
+            this.emitClsCompose(false)
+            eventBus.$emit(EVENT_SHOW_MSG, `Email sent!`);
+            if (this.isNote) {
+                this.$router.push({name:'addEmailNote',params:{title:this.subject,content:this.txt}})
+            } 
+        },
+        makeNote (){
+            this.isNote = true
         },
 
     },
