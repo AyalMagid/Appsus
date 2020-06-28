@@ -10,7 +10,7 @@ export default {
                  <div class="flex flex-col compose-container">
                      <div class="flex space-between">
                          <template v-if="isReply">
-                            <h3>{{emailToEdit.address}}</h3>
+                            <h5>{{emailToEdit.address}}</h5>
                             <input type="text"  v-model="subject" placeholder="Subject"/>
                         </template>
                          <h3 v-else>New Message</h3>

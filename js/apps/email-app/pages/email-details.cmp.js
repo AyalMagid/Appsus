@@ -16,7 +16,7 @@ export default {
             </div>
             <div class="flex flex-col details-container">
                 <div class="title-container">
-                     <h2>{{email.subject}}</h2>
+                     <h4>{{email.subject}}</h4>
                       <div>
                          <h5 >{{email.name}} : </h5>
                          <h5> {{email.address}} </h5>

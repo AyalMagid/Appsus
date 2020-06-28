@@ -3,7 +3,7 @@ import { emailService } from "../services/email-service.js";
 export default {
     template: `
         <section class="email-status">
-          <h3 class="txt">unread emails  </h3>
+          <h4 class="txt">Unread Emails  </h4>
           <div class="numbers-status">
           {{unredCount}} | {{unredByPrec}}
           </div>

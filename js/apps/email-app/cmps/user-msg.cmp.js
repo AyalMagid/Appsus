@@ -23,7 +23,7 @@ export default {
             clearTimeout(this.timeout)
             console.log(msg)
             this.msg = msg;
-            this.timeout = setTimeout(()=>{this.msg = null}, 3000)
+            this.timeout = setTimeout(()=>{this.msg = null}, 20000)
         })
     },
     methods: {
