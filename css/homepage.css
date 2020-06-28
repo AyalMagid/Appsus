@@ -6,16 +6,23 @@
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   color: #fff;
 }
 .hero-container p {
   font-size: 1.4rem;
+}
+.hero-container h3 {
+  margin-top: 0;
 }
 .hero-title {
   font-size: 3.5rem;
   color: #fff;
   text-transform: uppercase;
   letter-spacing: 3px;
+  margin: 0.5rem 0;
 }
 .btn-container {
   margin: 2rem 0px;
