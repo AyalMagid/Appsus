@@ -9,10 +9,8 @@ export default {
   template: `
         <section v-if="email" class="email-details"  @click.stop="closeSideBar">
         <email-header></email-header>
-            <!-- <router-link to="/email"><button class="close-email-btn">Back to Email list</button></router-link> -->
-         <!-- <div class="main-wrapper flex space-between"> -->
-            <div @click.stop="openSideBar" class="flex flex-col side-container" :class="{move: isMovedClass}">
-                 <!-- needs to send emails props but get it first so it can show the numbers-->
+            <button @click.stop="openSideBar" v-if="!isMoved" class="hamburger"><i class="fa fa-bars" ></i></button>
+            <div class="flex flex-col side-container" :class="{move: isMovedClass}">
                 <email-status ></email-status> 
                 <side-nav @compose="changeComposeMode"/>
             </div>
