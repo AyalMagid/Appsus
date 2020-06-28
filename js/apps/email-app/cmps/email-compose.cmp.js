@@ -20,7 +20,8 @@ export default {
                         <div class="flex space-between">
                             <input class="email-to" type="text" placeholder="To" />
                             <div>
-                                <button v-show="!isCc" @click="isCc=true">Cc</button><button v-show="!isBcc" @click="isBcc=true">Bcc</button>
+                                <button v-show="!isCc" @click="isCc=true">Cc</button>
+                                <button v-show="!isBcc" @click="isBcc=true">Bcc</button>
                             </div>
                         </div>
                         <input v-show="isCc" type="text" placeholder="Cc"/>

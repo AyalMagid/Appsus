@@ -4,10 +4,9 @@
     color: black;
     background-color:white;
     border-radius: 20px;
-
     position: fixed;
     z-index: 2;
-    bottom: 10px;
+    bottom: 0;
     right: 0;
     height: 70%;
     width: 70%;
@@ -33,22 +32,12 @@
 
 .btns-container {
     width:100%;
-    border-radius: 0 0 0 20px;
-    height: 50px;
-    margin-top: 0;
-    margin-bottom: 0;
-    position: fixed;
-    bottom: 0;
-}
-
-.btns-container{
     background-color:  #064e06;
     color: white;
-}
-
-button .submit-button{
-    padding-top: 8px;
-    padding-left: 15px;
+    border-radius: 0 0 0 20px;
+    height: 50px;
+    position: fixed;
+    bottom: 0;
 }
 
 .cls-btn{
@@ -57,8 +46,7 @@ button .submit-button{
 }
 
 .send-btn {
-    margin-left: 5px;
-    color:black;
+    padding-left: 15px;
 }
 
 
@@ -67,12 +55,20 @@ button .submit-button{
     border-radius: 0 20px 0 0;
     background-color:  #064e06;
     color: white;
+    border: 0;
 } 
 
+.btns-container button:last-child:hover{
+    background-color: #ffe066;;
+    color:black;
+}
 
 .pressed {
-    background-color: white;
-
+    background-color: white;;
+    margin-left: 10px;
+    border-radius: 20px;
+    border: none;
+    transition: 0.5s;
 }
 
 .compose-container input {
@@ -80,10 +76,10 @@ button .submit-button{
     border: none;
     border-bottom: solid gray 2px;
 }
+
 .email-to{
     flex-grow:1; 
 }
-
 
 .fa-trash:before ,.fa-paper-plane:before, .fa-reply:before   {
     font-size: 1.2rem;
