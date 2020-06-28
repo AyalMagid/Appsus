@@ -7,7 +7,7 @@ import UserMessage from "../UI elements/message-cmp.js";
 export default {
   template: `
   <div>
-    <Header/>
+    <Header :showIcon="true" :title="'Notes'" :iconType="'note'" />
     <AddNote/>
     <notes-grid :notes="notes" />
     <transition name="fade" mode="out-in">

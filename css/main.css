@@ -1,6 +1,9 @@
 /* Helpers */
 @import "./helpers.css";
 
+/*Homepage styles*/
+@import "./homepage.css";
+
 /*Fonts*/
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
 
@@ -47,10 +50,11 @@ html {
 
 button {
   cursor: pointer;
-  outline: none; 
+  outline: none;
 }
 
-input, textarea{
+input,
+textarea {
   outline: none;
 }
 
@@ -71,7 +75,10 @@ a {
 .app-header .logo {
   margin-right: 40px;
 }
+<<<<<<< HEAD
 
 .main-container{
   height: 100vh;
 }
+=======
+>>>>>>> 99d96fe90b8343c4f5728a936f25d355b25326ff
