@@ -14,7 +14,7 @@ export default {
       <h3>A new way to take notes</h3>
       <h4>One click away</h4>
       <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam eligendi provident consequatur sit? Error dicta accusantium quia eos debitis iusto?Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis mollitia est tenetur saepe aspernatur at.</p>
-      <button>Start right away</button>
+      <router-link tag="button" to="/note">Start right away</router-link>
     </div>
       <div class="img-container">
         <img src="img/iphonemockup.png"></img>
@@ -31,7 +31,7 @@ export default {
       <h3>Your new email solution</h3>
       <h4>in your pocket</h4>
       <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam eligendi provident consequatur sit? Error dicta accusantium quia eos debitis iusto?Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis mollitia est tenetur saepe aspernatur at.</p>
-      <button>Start right away</button>
+      <router-link tag="button" to="/email/list/isInbox">Start right away</router-link>
     </div>
       </div>
       </div>
