@@ -15,10 +15,10 @@ export default {
                 <side-nav @compose="changeComposeMode"/>
             </div>
             <div class="flex flex-col details-container">
-                <div class="title-container">
+                <div class="title-container flex ">
                      <h4>{{email.subject}}</h4>
                       <div>
-                         <h5 >{{email.name}} : </h5>
+                         <h5>{{email.name}} : </h5>
                          <h5> {{email.address}} </h5>
                       </div>
                 </div>

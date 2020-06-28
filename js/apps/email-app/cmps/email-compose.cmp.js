@@ -8,10 +8,10 @@ export default {
         <section class="email-compose">
             <form>
                  <div class="flex flex-col compose-container">
-                     <div class="flex space-between">
-                         <template v-if="isReply">
-                            <h5>{{emailToEdit.address}}</h5>
-                            <input type="text"  v-model="subject" placeholder="Subject"/>
+                     <div class="flex space-between reply-title-container">
+                         <template  v-if="isReply">
+                             <input type="text"  v-model="subject" placeholder="Subject"/>
+                              <h5>{{emailToEdit.address}}</h5>
                         </template>
                          <h3 v-else>New Message</h3>
                         <button @click="emitClsCompose(true)" class="cls-compose"><i class="cls-btn i-btns fa fa-window-close" aria-hidden="true"></i></button>
