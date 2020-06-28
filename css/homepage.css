@@ -2,7 +2,7 @@
   padding: 4rem;
   min-height: 100vh;
   background: linear-gradient(-45deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-    url("img/hero.jpg");
+    url("/img/hero.jpg");
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -31,4 +31,76 @@
 }
 .hero-container button:nth-last-of-type(2) {
   margin: 0px 10px;
+}
+.app-wrapper {
+  width: 100%;
+  background-color: #ecf0f1;
+}
+.note-app-intro-container {
+  padding: 2rem;
+  max-width: 980px;
+  margin: 1rem auto;
+  display: flex;
+}
+
+.app-introduction {
+  display: flex;
+  flex-direction: column;
+}
+.app-introduction h4 {
+  margin-top: 10px;
+  margin-bottom: 0;
+  color: #414141;
+}
+.app-introduction h3 {
+  font-size: 2rem;
+  text-transform: uppercase;
+  font-weight: 400;
+  margin: 0;
+}
+.app-introduction button {
+  align-self: start;
+  border: 0;
+  padding: 0.8rem 2rem;
+  background-color: transparent;
+  border: 2px solid #333;
+  border-radius: 15px;
+  transition: all 0.3s ease-in-out;
+  text-transform: uppercase;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 500;
+}
+.app-introduction button:hover {
+  background-color: #ffe066e5;
+  color: #333;
+}
+.img-container {
+  display: flex;
+  justify-content: center;
+}
+.img-container:nth-of-type(1) {
+  justify-content: start;
+}
+.img-container img {
+  height: 100%;
+  width: 85%;
+}
+@media only screen and (max-width: 660px) {
+  .note-app-intro-container {
+    flex-direction: column;
+  }
+  .app-introduction {
+    margin-top: 1rem;
+  }
+  .img-container img {
+    margin-top: 1rem;
+    width: 100%;
+  }
+  .hero-container {
+    padding: 2rem;
+  }
+  .hero-title {
+    font-size: 2.8rem;
+  }
 }

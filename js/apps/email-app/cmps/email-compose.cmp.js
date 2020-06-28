@@ -33,7 +33,7 @@ export default {
                         <div class="btns-container" >
                             <button @click.prevent="sendEmail" class="send-btn" :disabled="!isValid" ><i class="i-btns fa fa-paper-plane " aria-hidden="true"></i></button>
                             <button class="delete-btn" @click.prevent="emitClsCompose(false)"><i class="i-btns fa fa-trash" aria-hidden="true"></i></button>
-                            <button @click.prevent="makeNote" class="note-btn">Make a note</button>
+                            <button @click.prevent="makeNote"  :class="{'pressed':!isNote}">{{!isNote? 'Make a note':'Email will be saved as note - click to cancel'}}</button>
                         </div>
                     </div>   
                  </div>
@@ -73,14 +73,15 @@ export default {
             // adding it to inbox as incoming mail and to sent mail also
             emailService.addEmail(email)
             console.log('sent', email)
-            this.emitClsCompose(false)
             eventBus.$emit(EVENT_SHOW_MSG, `Email sent!`);
             if (this.isNote) {
+                console.log('yesss')
                 this.$router.push({name:'addEmailNote',params:{title:this.subject,content:this.txt}})
             } 
+            this.emitClsCompose(false)
         },
         makeNote (){
-            this.isNote = true
+            this.isNote = !this.isNote
         },
 
     },

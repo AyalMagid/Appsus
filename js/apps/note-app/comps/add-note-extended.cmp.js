@@ -19,7 +19,7 @@ export default {
       <label class="title-label">Enter title</label>
       </div>
     <component :urlContent="urlContent" @addnote="addNote" :note="note" :buttonText="buttonText" :is="noteTypeComputed"/>
-    <note-editing @colorchoosen="setColor"  :note="note" />
+    <note-editing v-if="note" @colorchoosen="setColor"  :note="note" />
   </div>
   </div>`,
   data() {

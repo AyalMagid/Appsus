@@ -3,6 +3,8 @@
 
 /*Homepage styles*/
 @import "./homepage.css";
+@import "./erorpage.css";
+@import "./footer.css";
 
 /*Fonts*/
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
@@ -37,7 +39,6 @@ body {
   margin: 0;
   page-break-inside: avoid;
   break-inside: avoid;
-  background-color: #40654ab8;
 }
 
 html {

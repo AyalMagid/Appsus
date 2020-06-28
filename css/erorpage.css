@@ -1,0 +1,42 @@
+.error-page-container {
+  min-height: 100vh;
+  background: url("../img/404.jpg");
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  background-position: right;
+  background-size: cover;
+  text-align: center;
+}
+
+.error-page-container h1,
+h2 {
+  margin: 0.5rem;
+  color: #fff;
+}
+
+.error-page-container h2 {
+  color: rgb(211, 211, 211);
+}
+.error-code {
+  font-size: 4.5rem;
+  font-weight: 900;
+  letter-spacing: 3px;
+}
+.error-page-container button {
+  margin-top: 1rem;
+  border: none;
+  outline: none;
+  padding: 1rem 2rem;
+  text-transform: uppercase;
+  border-radius: 15px;
+  color: #fff;
+  background-color: transparent;
+  border: 2px solid rgb(194, 194, 194);
+  transition: all 0.3s ease-in-out;
+  font-weight: 600;
+}
+.error-page-container button:hover {
+  background-color: #ffe066;
+  color: #333;
+}

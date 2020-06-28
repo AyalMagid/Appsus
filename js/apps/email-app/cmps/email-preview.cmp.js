@@ -7,7 +7,6 @@ export default {
                 <div class="checkboxes">
                     <input @click.stop="toggleStarred" class="star" type="checkbox" title="bookmark starred Emails">
                     <input @click.stop type="checkbox" class="checkbox" v-model="email.isRead" title="Mark as Read/Unread">
-
                 </div>
                 <template class="flex space-between">
                     <p class="email-name">{{email.name}}</p>
