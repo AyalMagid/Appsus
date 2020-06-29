@@ -10,7 +10,7 @@ export default {
       <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odio, id, fuga dolorum repudiandae eos commodi libero</p>
      </div>
      <div class="hero-img-container">
-       <img src="/img/spa.svg"></img>
+       <img src="img/spa.svg"></img>
      </div>
   </div>
     <section class="application-features-container">

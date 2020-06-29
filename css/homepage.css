@@ -120,6 +120,7 @@
 @media only screen and (max-width: 850px) {
   .hero-container {
     padding: 0rem;
+    min-height: 60vh;
   }
   .hero-title {
     font-size: 2.6rem;
