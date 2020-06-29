@@ -52,7 +52,7 @@ export default {
       const itemsLength = this.items.length;
       let note = { type, todos: this.items };
       if (!this.note) {
-        this.items.pop();
+        if (!this.items[itemsLength - 1].content.length) this.items.pop();
       } else {
         note.id = this.note.id;
         if (!this.items[itemsLength - 1].content) this.items.pop();
