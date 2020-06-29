@@ -49,14 +49,21 @@
 .change-img-btn div {
   top: 20px;
 }
-
+.new-img-btn {
+  border: none;
+  outline: none;
+  text-transform: uppercase;
+  background-color: #fed766;
+  color: #333;
+  padding: 10px 0;
+  font-weight: bold;
+}
 .new-image-url-container {
   position: absolute;
   padding: 10px 20px;
   min-height: 100px;
   width: 300px;
   right: 0px;
-  bottom: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;

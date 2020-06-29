@@ -1,3 +1,5 @@
+/*General Note CSS*/
+
 .note-container {
   background-color: #fed766;
   border-radius: 10px;
@@ -8,7 +10,6 @@
   page-break-inside: avoid;
   break-inside: avoid;
   cursor: pointer;
-  /* border: 3px solid rgba(145, 145, 145, 0.2); */
 }
 
 .note-container img {
@@ -38,38 +39,9 @@ iframe {
   border-bottom: 1px solid #333;
 }
 
-.fa-spinner {
-  position: absolute;
-  left: 45%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 1rem;
-  animation: spin 1.5s linear 0s infinite normal;
-}
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  50% {
-    transform: rotate(180deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-.completed {
-  background-color: #fff;
-  color: #63d471;
-}
-
-.text-through {
-  text-decoration: line-through;
-}
 .note-title {
   margin-top: 0;
 }
-
 .add-note-btn {
   margin-top: 25px;
   display: block;
@@ -82,4 +54,37 @@ iframe {
 .add-note-btn:hover {
   transform: scale(1.1);
   color: #e67e22;
+}
+.text-notes-container {
+  padding: 1rem;
+}
+
+.title-label {
+  color: #333;
+  position: absolute;
+  top: -5px;
+  left: 10px;
+  transition: 0.3s all ease-in-out;
+}
+.title-input:focus ~ .title-label {
+  top: -20px;
+  font-size: 14px;
+  color: #333;
+}
+.title-input::placeholder {
+  color: #000;
+}
+.title-input {
+  position: relative;
+  width: 100%;
+  padding: 15px 10px 10px 10px;
+  color: #333;
+  border: none;
+  border-bottom: 1px solid #333;
+  transition: all 0.3s ease-in-out;
+  background-color: transparent;
+}
+.title-input:focus {
+  outline: none;
+  border-bottom: 1px solid #333;
 }

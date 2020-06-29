@@ -1,6 +1,5 @@
 import TodoList from "./note components/todos/todo-list.cmp.js";
 import addNoteExtended from "./add-note-extended.cmp.js";
-
 import NoteEditing from "./note components/note-editing.cmp.js";
 
 export default {
@@ -8,7 +7,7 @@ export default {
   template: `
 <div
 :style="note.style"
-class="note-container todo-notes-container"
+class="note-container text-notes-container"
 @click="showEdit = !showEdit"
 @mouseover="showEditingPanel=true"
 @mouseleave="showEditingPanel=false"

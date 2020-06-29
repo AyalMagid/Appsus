@@ -27,36 +27,6 @@
   position: relative;
 }
 
-.title-label {
-  color: #333;
-  position: absolute;
-  top: -5px;
-  left: 10px;
-  transition: 0.3s all ease-in-out;
-}
-.title-input:focus ~ .title-label {
-  top: -20px;
-  font-size: 14px;
-  color: #333;
-}
-.title-input::placeholder {
-  color: #000;
-}
-.title-input {
-  position: relative;
-  width: 100%;
-  padding: 15px 10px 10px 10px;
-  color: #333;
-  border: none;
-  border-bottom: 1px solid #333;
-  transition: all 0.3s ease-in-out;
-  background-color: transparent;
-}
-.title-input:focus {
-  outline: none;
-  border-bottom: 1px solid #333;
-}
-
 .add-note-extended-container img {
   width: 50%;
   height: 50%;

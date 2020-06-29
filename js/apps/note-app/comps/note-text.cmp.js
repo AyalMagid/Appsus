@@ -4,7 +4,7 @@ import NoteEditing from "./note components/note-editing.cmp.js";
 export default {
   props: ["note"],
   template: `<div
-   class="note-container todo-notes-container"
+   class="note-container text-notes-container"
    :style="note.style"
    @mouseover="showEditingPanel=true"
    @mouseleave="showEditingPanel=false"

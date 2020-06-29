@@ -7,12 +7,11 @@ export default {
     <div class="note-editing-icons-container" v-if="isEdit">
       <i @click="removeNote" class="fas fa-trash"></i>
       <i @click="duplicateNote" class="fas fa-clone"></i>
-      <i class="fas fa-thumbtack"></i>
       <i v-if="isImage" @click.self="showImageUrl=!showImageUrl" class="fas fa-image change-img-btn">
         <div class="new-image-url-container" v-if="showImageUrl">
         <label >Enter new Image url</label>
           <input  v-model="newImageUrl" placeholder="enter URL for new Image"/>
-          <button @click="changeBackgroundImage">Edit</button>
+          <button class="new-img-btn" @click="changeBackgroundImage">Edit</button>
         </div>
       </i>
       <i @click="showColors = !showColors"  class="fas fa-palette color-picker">
@@ -26,6 +25,7 @@ export default {
  
     </div>
 </div>`,
+  // <i class="fas fa-thumbtack"></i>
   data() {
     return {
       isEdit: false,
