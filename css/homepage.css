@@ -106,7 +106,9 @@
 }
 @media only screen and (min-width: 1500px) {
   .hero-container {
+    max-width: 1300px;
     align-items: center;
+    min-height: 50vh;
   }
 }
 @media only screen and (max-width: 1020px) {
