@@ -7,18 +7,10 @@ export default {
     <div v-if="!showAddNote" class="add-note-container">
       <input @click="showAddNote = !showAddNote" type="text" placeholder="Type Something..."/>
       <div add-note-icons-container>   
-        <i @mouseout="toggleSnackbar('text')" @mouseover="toggleSnackbar('text')" @click="setNoteType('AddTextNote')" class=" icon fas fa-font font">
-          <snackbar-icon :showSnackbar="showSnackBars['text']" snackbarText="Add a text note"/>
-        </i>
-        <i @mouseout="toggleSnackbar('video')" @mouseover="toggleSnackbar('video')" @click="setNoteType('AddVideoNote')" class=" icon fab fa-youtube youtube">
-          <snackbar-icon :showSnackbar="showSnackBars['video']" snackbarText="Add a youtube video"/>
-        </i>
-        <i @mouseout="toggleSnackbar('image')" @mouseover="toggleSnackbar('image')"  @click="setNoteType('AddImgNote')" class=" icon fas  fa-image image-icon">
-          <snackbar-icon :showSnackbar="showSnackBars['image']" snackbarText="add an image note"/>
-        </i>
-        <i @mouseout="toggleSnackbar('list')" @mouseover="toggleSnackbar('list')" @click="setNoteType('AddListNote')" class=" icon fas fa-list list">
-          <snackbar-icon :showSnackbar="showSnackBars['list']" snackbarText="add a list note"/>
-        </i>
+        <i @click="setNoteType('AddTextNote')" class=" icon fas fa-font font"></i>
+        <i @click="setNoteType('AddVideoNote')" class=" icon fab fa-youtube youtube"></i>
+        <i @click="setNoteType('AddImgNote')" class=" icon fas  fa-image image-icon"> </i>
+        <i @click="setNoteType('AddListNote')" class=" icon fas fa-list list"></i>
       </div>
     </div>
     <div v-if="showAddNote">
@@ -46,11 +38,9 @@ export default {
       this.showSnackBars[type] = !this.showSnackBars[type];
     },
     addNote() {
-      console.log("here");
       this.showAddNote = !this.showAddNote;
     },
   },
-
   components: {
     AddNoteExtended,
     Icon,
