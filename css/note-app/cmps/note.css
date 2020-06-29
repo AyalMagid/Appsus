@@ -63,6 +63,7 @@ iframe {
   color: #333;
   position: absolute;
   top: -5px;
+  left: 0px;
   transition: 0.3s all ease-in-out;
 }
 .title-input:focus ~ .title-label {
