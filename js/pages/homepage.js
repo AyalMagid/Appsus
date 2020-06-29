@@ -4,9 +4,14 @@ export default {
   <div class="main-homepage-container">
     <Header :title="'Appsus'" />
   <div class="hero-container">
-    <h1 class="hero-title">Your productivity solution</h1>
-    <h3>You wanted it , you got it</h3>
-    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odio, id, fuga dolorum repudiandae eos commodi libero perferendis quia quo aperiam iste deserunt pariatur placeat debitis.</p>
+     <div class="hero-content">
+      <h1 class="hero-title">Your productivity solution</h1>
+      <h3>You wanted it , you got it</h3>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odio, id, fuga dolorum repudiandae eos commodi libero</p>
+     </div>
+     <div class="hero-img-container">
+       <img src="/img/spa.svg"></img>
+     </div>
   </div>
     <section class="application-features-container">
     <div class="note-app-intro-container">
@@ -25,7 +30,7 @@ export default {
     <div class="app-wrapper">
     <div class="note-app-intro-container">
     <div class="img-container">
-    <img src="img/mail.jpg"></img>
+    <img src="img/iphoneXmockup.png"></img>
   </div>
     <div class="app-introduction">
       <h3>Your new email solution</h3>

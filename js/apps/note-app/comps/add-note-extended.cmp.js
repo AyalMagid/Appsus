@@ -75,6 +75,7 @@ export default {
       this.backgroundColor = backgroundcolor;
     },
     addNote(payload) {
+      let snackbarMessage = "Note added";
       let note = {};
       note.type = payload.type;
       note.style = { backgroundColor: this.backgroundColor };
@@ -84,8 +85,9 @@ export default {
         note.info = { title: this.title, todos: payload.todos };
       } else {
         if (!this.title && !payload.content) {
+          snackbarMessage = "A text note must have either a title or content";
           eventBus.$emit("displayMessage", {
-            content: "A text note must have either a title or content",
+            content: snackbarMessage,
             failure: true,
           });
           this.showComponent = false;
@@ -95,10 +97,11 @@ export default {
       }
       if (payload.id) {
         note.id = payload.id;
+        snackbarMessage = "Note updated";
       }
       notesService.addNote(note);
       this.$emit("addnote");
-      eventBus.$emit("displayMessage", { content: "Note Added" });
+      eventBus.$emit("displayMessage", { content: snackbarMessage });
       if (this.$route.params.title) {
         this.$router.push("/note");
       }
