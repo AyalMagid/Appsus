@@ -3,6 +3,7 @@ export default {
   template: `
   <div class="main-homepage-container">
     <Header :title="'Appsus'" />
+<div class="app-wrapper">
   <div class="hero-container">
      <div class="hero-content">
         <h1 class="hero-title">Your productivity solution</h1>
@@ -12,6 +13,7 @@ export default {
      <div class="hero-img-container">
        <img class="hero-img" src="img/spa.svg"></img>
      </div>
+  </div>
   </div>
     <section class="application-features-container">
       <div class="note-app-intro-container">
