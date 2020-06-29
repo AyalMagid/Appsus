@@ -59,6 +59,13 @@ iframe {
   padding: 1rem;
 }
 
+.visable {
+  opacity: 1;
+}
+.invisable {
+  opacity: 0;
+}
+
 .title-label {
   color: #333;
   position: absolute;

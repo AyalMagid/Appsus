@@ -4,7 +4,7 @@ import SnackbarIcon from "./Shared components/icon-snackbar.js";
 export default {
   template: `
   <div>
-    <div v-if="!showAddNote" class="add-note-container">
+    <div :class="visability" class="add-note-container">
       <input @click="showAddNote = !showAddNote" type="text" placeholder="Type Something..."/>
       <div add-note-icons-container>   
         <i @click="setNoteType('AddTextNote')" class=" icon fas fa-font font"></i>
@@ -28,6 +28,11 @@ export default {
         list: false,
       },
     };
+  },
+  computed: {
+    visability() {
+      return this.showAddNote ? "invisable" : "visable";
+    },
   },
   methods: {
     setNoteType(noteType) {
