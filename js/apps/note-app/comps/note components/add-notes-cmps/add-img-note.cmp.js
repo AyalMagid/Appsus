@@ -8,8 +8,8 @@ export default {
     <div class="image-note-add-container">
     <input class="title-input"  v-model="imgUrl"  placeholder="enter img url" />
       <label class="title-label">Enter Image URL</label>
-      <i @click="addNote" :class="buttonText"></i>
       </div>
+      <i @click="addNote" class="add-note-btn" :class="buttonText"></i>
     </div>
   </div>`,
   data() {

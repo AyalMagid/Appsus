@@ -26,7 +26,7 @@ export default {
     return {
       title: "",
       showOverlay: true,
-      backgroundColor: "yellow",
+      backgroundColor: "#fff",
       showComponent: true,
     };
   },
@@ -54,7 +54,7 @@ export default {
       else return null;
     },
     buttonText() {
-      return this.note ? "far fa-save" : "fas fa-plus";
+      return this.note ? "far fa-save" : "fas fa-plus-square";
     },
     overlayClass() {
       return {
@@ -91,6 +91,7 @@ export default {
             failure: true,
           });
           this.showComponent = false;
+          this.$emit("close");
           return;
         }
         note.info = { title: this.title, content: payload.content };

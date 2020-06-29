@@ -9,7 +9,7 @@ export default {
     <input class="title-input"  v-model="videoUrl"  placeholder="enter video url" />
     <label class="title-label">Enter Video URL</label>
     </div>
-      <i @click="addNote" :class="buttonText"></i>
+      <i @click="addNote" class="add-note-btn" :class="buttonText"></i>
   </div>`,
   data() {
     return {
@@ -35,7 +35,6 @@ export default {
       if (this.note) {
         note.id = this.note.id;
       }
-      console.log(note);
       this.$emit("addnote", note);
     },
   },

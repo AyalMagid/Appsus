@@ -3,7 +3,10 @@
 }
 .todo-list-container {
   margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
 }
 .todo-list-container > * {
   cursor: pointer;
+  display: inline-block;
 }

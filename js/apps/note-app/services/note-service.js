@@ -33,7 +33,7 @@ const notes = [
         "https://scontent.foko1-1.fna.fbcdn.net/v/t1.0-9/p960x960/91513578_1431166250388563_3069995301231132672_o.jpg?_nc_cat=100&_nc_sid=19026a&_nc_ohc=g3FzMxsOBCMAX9X5g9E&_nc_ht=scontent.foko1-1.fna&_nc_tp=6&oh=fc9ca5a5b92894d651e96914fc83a66c&oe=5F193B5E",
       title: "Taking the dogs for a walk",
     },
-    style: { backgroundColor: "#247BA0" },
+    style: { backgroundColor: "#D9DBF1" },
     isPinned: false,
   },
   {
@@ -73,8 +73,7 @@ const getNoteIndex = (noteId) => {
 const changeColor = (noteId, color) => {
   const noteIndex = getNoteIndex(noteId);
   if (color === "#fff") {
-    notes[noteIndex].style.boxShadow = `4px 4px 8px 0 rgba(56, 56, 56, 0.25),
-  -8px -8px 12px 0px rgba(71, 71, 71, 0.06)`;
+    setBoxShadow(notes[noteIndex]);
   } else {
     notes[noteIndex].style.boxShadow = "";
   }
@@ -96,16 +95,25 @@ const changeBackgroundImage = (noteId, imageUrl) => {
   notes[noteIndex].info.url = imageUrl;
 };
 
+const setBoxShadow = (note) => {
+  note.style.boxShadow = `4px 4px 8px 0 rgba(56, 56, 56, 0.25),-8px -8px 12px 0px rgba(71, 71, 71, 0.06)`;
+};
+const checkIsBackgroundColorWhite = (backgroundColor) => {
+  return backgroundColor === "#fff";
+};
+
 const addNote = (note) => {
   const doesExist = note.id;
   if (doesExist) {
     const noteIndex = getNoteIndex(note.id);
-    if ((notes[noteIndex].style.backgroundColor = "#fff")) {
-      note.style.boxShadow = `4px 4px 8px 0 rgba(56, 56, 56, 0.25),-8px -8px 12px 0px rgba(71, 71, 71, 0.06)`;
+    if (checkIsBackgroundColorWhite(notes[noteIndex].style.backgroundColor)) {
+      setBoxShadow(note);
     }
     notes.splice(noteIndex, 1, note);
     return;
   }
+  if (checkIsBackgroundColorWhite(note.style.backgroundColor))
+    setBoxShadow(note);
   note.id = utilService.makeId();
   return notes.unshift(note);
 };

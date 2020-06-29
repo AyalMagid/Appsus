@@ -52,11 +52,31 @@
 
 .new-image-url-container {
   position: absolute;
-  right: 50px;
+  padding: 10px 20px;
+  min-height: 100px;
+  width: 300px;
+  right: 0px;
+  bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   border-radius: 15px;
   background-color: white;
   box-shadow: 4px 4px 8px 0 rgba(56, 56, 56, 0.25),
     -8px -8px 12px 0px rgba(71, 71, 71, 0.06);
-  padding: 10px 20px;
   z-index: 2;
+}
+.new-image-url-container > * {
+  margin: 5px 0;
+}
+.new-image-url-container input {
+  border: none;
+  padding-bottom: 2px;
+  border-bottom: 1px solid #333;
+  outline: none;
+}
+.new-image-url-container label {
+  text-align: center;
+  color: #333;
+  font-family: "Montserrat", sans-serif;
 }

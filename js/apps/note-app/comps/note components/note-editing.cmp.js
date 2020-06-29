@@ -10,8 +10,9 @@ export default {
       <i class="fas fa-thumbtack"></i>
       <i v-if="isImage" @click.self="showImageUrl=!showImageUrl" class="fas fa-image change-img-btn">
         <div class="new-image-url-container" v-if="showImageUrl">
-          <input  v-model="newImageUrl" placeholder="enter URL for new Image"></input>
-          <button @click="changeBackgroundImage">add</button>
+        <label >Enter new Image url</label>
+          <input  v-model="newImageUrl" placeholder="enter URL for new Image"/>
+          <button @click="changeBackgroundImage">Edit</button>
         </div>
       </i>
       <i @click="showColors = !showColors"  class="fas fa-palette color-picker">
@@ -32,7 +33,7 @@ export default {
       isImage: false,
       showImageUrl: false,
       newImageUrl:
-        "https://scontent.foko1-1.fna.fbcdn.net/v/t1.0-9/104490397_1497359800435874_3286166808258794385_o.jpg?_nc_cat=111&_nc_sid=730e14&_nc_ohc=tlrSXfdDK6AAX9Ybpgk&_nc_ht=scontent.foko1-1.fna&oh=b440cd359f497443b65aeaf9591046c3&oe=5F197893",
+        "https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=480&w=640",
       colors: [
         { backgroundColor: "#002626" },
         { backgroundColor: "#D02A25" },

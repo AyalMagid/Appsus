@@ -10,7 +10,7 @@ export default {
       <input class="general-input" v-model="items[index].content" @keyup.delete='removeItem(index)' placeholder="Enter list item" @input="addItem(index)" />
       </li>
     </ul>
-    <i @click="addNote" :class="buttonText"></i>
+    <i @click="addNote" class="add-note-btn" :class="buttonText"></i>
   </div>`,
   data() {
     return {

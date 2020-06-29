@@ -4,7 +4,7 @@ export default {
   <div class="add-text-note-container">
     <textarea  class="title-input" v-model="content"  placeholder="enter content" />
     <label class="title-label">Enter Contnet</label>
-    <i @click="addNote" :class="buttonText"></i>
+    <i @click="addNote" class="add-note-btn" :class="buttonText"></i>
   </div>`,
   data() {
     return {

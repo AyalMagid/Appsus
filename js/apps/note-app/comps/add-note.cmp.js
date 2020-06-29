@@ -22,7 +22,7 @@ export default {
       </div>
     </div>
     <div v-if="showAddNote">
-      <add-note-extended @close="showAddNote=!showAddNote" @addnote="addNote" :noteType="noteType" />
+      <add-note-extended  @close="showAddNote=!showAddNote" @addnote="addNote" :noteType="noteType" />
     </div>
   </div>`,
   data() {
